@@ -1,9 +1,15 @@
 /.claude
-/studyos-thesis-finder.aux
-/studyos-thesis-finder.fdb_latexmk
-/studyos-thesis-finder.fls
-/studyos-thesis-finder.log
-/studyos-thesis-finder.nav
-/studyos-thesis-finder.out
-/studyos-thesis-finder.snm
-/studyos-thesis-finder.toc
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
