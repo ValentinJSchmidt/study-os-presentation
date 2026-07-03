@@ -44,6 +44,17 @@ latexmk -c                                    # remove build artifacts (keeps th
 latexmk -C                                    # remove build artifacts including the PDF
 ```
 
+## Presenting
+
+Use [pympress](https://github.com/pympress/pympress) to present the PDF:
+it gives you a presenter console (current + next slide, timer, notes) on
+your screen while the audience sees only the slides.
+
+```bash
+sudo apt install pympress    # or: pipx install pympress
+pympress studyos-thesis-finder.pdf
+```
+
 ## Editing the slides
 
 Everything lives in the single file `studyos-thesis-finder.tex`:
