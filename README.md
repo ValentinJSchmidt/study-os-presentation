@@ -36,10 +36,36 @@ latexmk -pdf studyos-thesis-finder.tex
 
 Output: `studyos-thesis-finder.pdf` (16:9, 11 slides).
 
-Clean build artifacts with:
+Useful variants:
 
 ```bash
-latexmk -c
+latexmk -pdf -pvc studyos-thesis-finder.tex   # watch mode: rebuild on save
+latexmk -c                                    # remove build artifacts (keeps the PDF)
+latexmk -C                                    # remove build artifacts including the PDF
+```
+
+## Editing the slides
+
+Everything lives in the single file `studyos-thesis-finder.tex`:
+
+- **Presenter and date:** edit the `\author{...}`, `\institute{...}`, and
+  `\date{...}` lines near the top — they currently hold placeholders
+  ("StudyOS Team", "July 2026").
+- **Colors:** the two accent colors are defined once as `sosAccent` and
+  `sosDark` (`\definecolor` near the top); change them there and the
+  progress bar, frame titles, diagrams, and highlights follow.
+- **Slides:** each slide is a `\begin{frame}{Title} ... \end{frame}` block;
+  add, remove, or reorder blocks freely. The two diagrams (skill pipeline,
+  researcher tree) are inline TikZ pictures inside their frames.
+- **Overflow check:** after larger edits, run the build and look for
+  `Overfull \vbox` warnings in `studyos-thesis-finder.log` — they mean a
+  slide's content is taller than the frame. (One harmless warning on the
+  title slide comes from the Metropolis theme itself.)
+
+To eyeball all slides as images without opening a PDF viewer:
+
+```bash
+pdftoppm -png -r 80 studyos-thesis-finder.pdf slide
 ```
 
 ## Content sources
