@@ -1,9 +1,13 @@
-# StudyOS Thesis-Finder — Faculty Presentation
+# StudyOS Thesis-Finder — Presentation
 
-LaTeX Beamer slides that pitch the [study-os-thesis](../study-os-thesis)
-project to faculty members: an agent-skill package that takes students from
-vague interests to a well-prepared first contact with a fitting thesis
-supervisor.
+LaTeX Beamer slides for the [study-os-thesis](../study-os-thesis)
+project: a **database-less, portable agent-skill package** that takes students
+from vague interests to a well-prepared first contact with a fitting thesis
+supervisor, across all faculties of the University of Tübingen and BW companies.
+
+The deck tells the project story — the 27-professor research, the pivot
+away from a hosted database app, the two-track skill architecture, and where
+the project stands and is heading.
 
 ## Requirements
 
@@ -34,7 +38,7 @@ Or install TeX Live directly from [tug.org/texlive](https://www.tug.org/texlive/
 latexmk -pdf studyos-thesis-finder.tex
 ```
 
-Output: `studyos-thesis-finder.pdf` (16:9, 11 slides).
+Output: `studyos-thesis-finder.pdf` (16:9, 12 slides).
 
 Useful variants:
 
@@ -66,8 +70,9 @@ Everything lives in the single file `studyos-thesis-finder.tex`:
   `sosDark` (`\definecolor` near the top); change them there and the
   progress bar, frame titles, diagrams, and highlights follow.
 - **Slides:** each slide is a `\begin{frame}{Title} ... \end{frame}` block;
-  add, remove, or reorder blocks freely. The two diagrams (skill pipeline,
-  researcher tree) are inline TikZ pictures inside their frames.
+  add, remove, or reorder blocks freely. The two diagrams (the one-entry /
+  two-track flow, and the two-pass search method) are inline TikZ pictures
+  inside their frames.
 - **Overflow check:** after larger edits, run the build and look for
   `Overfull \vbox` warnings in `studyos-thesis-finder.log` — they mean a
   slide's content is taller than the frame. (One harmless warning on the
@@ -81,8 +86,10 @@ pdftoppm -png -r 80 studyos-thesis-finder.pdf slide
 
 ## Content sources
 
-The slides are distilled from the thesis repo's planning and research docs,
-mainly `MASTERPLAN.md`, `STATUS.md`, `docs/research/product_positioning.md`,
-and `docs/research/skill_architecture_summary.md`. Professor quotes and
-statistics come from the 27-professor interview study summarized there;
-names are intentionally omitted from the slides.
+The slides are distilled from the thesis repo's planning and history docs,
+mainly `MASTERPLAN.md`, `README.md`, `CHANGELOG.md`, the curated
+`docs/thesis-report/` narrative (esp. `01-the-pivot/` and
+`03-hardening-and-evaluation/`), and the evaluation scorecard under
+`findings/no_db_universal_skill/`. Professor quotes and statistics come from
+the 27-professor interview study summarized there; names are intentionally
+omitted from the slides.

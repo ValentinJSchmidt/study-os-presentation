@@ -1,4 +1,4 @@
-% StudyOS Thesis-Finder — faculty presentation
+% StudyOS Thesis-Finder — project presentation
 % Build: latexmk -pdf studyos-thesis-finder.tex
 \documentclass[11pt,aspectratio=169]{beamer}
 
@@ -22,7 +22,7 @@
   \end{beamercolorbox}}
 
 \title{StudyOS Thesis-Finder}
-\subtitle{Better-prepared students, fewer misdirected inquiries}
+\subtitle{From vague interests to a prepared first contact --- with no database to maintain}
 \author{StudyOS Team}
 \institute{Department of Computer Science, University of Tübingen}
 \date{July 2026}
@@ -52,13 +52,13 @@
   \end{columns}
   \vspace{1em}
   \begin{center}
-    \alert{Both sides lose to the same failure: low-signal first contact.}
+    \alert{Both sides lose to the same failure: a broken cold start.}
   \end{center}
 \end{frame}
 
-\begin{frame}{What 27 professors in this department told us}
-  We interviewed 27 professors before building anything. The verdict on a
-  classic \emph{topic-listing platform}:
+\begin{frame}{What 27 professors told us --- before we built anything}
+  We interviewed 27 professors in this department. The verdict on a classic
+  \emph{topic-listing platform} was blunt:
   \begin{itemize}
     \item \textbf{$\sim$50\%} do not want a central platform --- either already
       overrun with applicants, or convinced topics must be
@@ -74,66 +74,98 @@
   \alert{incentive} reasons, not UI reasons.
 \end{frame}
 
-\begin{frame}{Our conclusion: build for students, not for chairs}
-  \begin{center}
-    \large A tool that requires \alert{zero professor participation} to deliver value.
-  \end{center}
-  \vspace{0.4em}
-  The agent helps a student to:
-  \begin{enumerate}
-    \item \textbf{Formulate} --- turn vague interests, coursework, and skills
-      into a structured competency profile
-    \item \textbf{Discover} --- find which chairs and researchers actually work
-      on relevant problems, based on \emph{public} data: publications, team
-      pages, research-area statements
-    \item \textbf{Prepare} --- draft a specific, high-signal first contact:
-      who they are, what they can do, why \emph{this} chair
-  \end{enumerate}
-  \vspace{0.8em}
-  Chairs remain passive data sources by default; their own websites stay the
-  source of truth.
+\begin{frame}{The plan we started with --- and why we abandoned it}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \textbf{First attempt}\\[0.3em]
+      A hosted web app --- FastAPI $\cdot$ Celery $\cdot$ Postgres+pgvector
+      $\cdot$ React --- scraping professors and serving a match portal.
+      \smallskip
+      \begin{itemize}
+        \item Covered \textbf{CS Tübingen only}, would have gone stale within months
+        \item Assumed HiWis would keep a scraping pipeline alive "forever", but with low effort
+        \item But still needed someone to maintain the database
+
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \textbf{The pivot}\\[0.3em]
+      \begin{center}
+        \alert{\large A database is the wrong asset.}
+      \end{center}
+      \smallskip
+      The professors' own signal pointed the way: \emph{build for students,
+      read what already exists, ask chairs for nothing.}
+      \smallskip
+
+      So we stopped maintaining data and started packaging \emph{how to
+      search} --- a portable agent skill, live web as the only data source.
+    \end{column}
+  \end{columns}
 \end{frame}
 
-\begin{frame}{How it works: a pipeline of agent skills}
-  No app, no accounts, no server. The student runs a standard AI coding/chat
-  agent; our package is a set of portable \emph{skills} plus curated data.
-  \vspace{0.5em}
+\begin{frame}{The idea: ship the method, not the data}
+  \begin{center}
+    \large A tool that requires \alert{zero professor participation} and has
+    \alert{no database to keep fresh}.
+  \end{center}
+  \smallskip
+  The student runs a standard AI agent (Claude, ChatGPT, Gemini); our
+  package is a set of portable \emph{skills} that help them:
+  \begin{enumerate}
+    \item \textbf{Formulate} --- a guided interview turns vague interests and
+      coursework into a structured six-dimension profile
+    \item \textbf{Discover} --- systematic live search surfaces which chairs,
+      groups, and companies actually work on relevant problems
+    \item \textbf{Prepare} --- draft a specific, high-signal first contact
+  \end{enumerate}
+  \smallskip
+  The deliverable is a \alert{map of the possibilities}, not a finished
+  thesis --- ``\emph{now I know what exists and where to start.}''
+\end{frame}
+
+\begin{frame}{How it works: one entry point, two tracks}
   \begin{center}
   \begin{tikzpicture}[
       stage/.style={draw=sosDark, thick, rounded corners=2pt, fill=sosDark!6,
-        align=center, font=\footnotesize, inner sep=4pt, minimum width=27mm},
+        align=center, font=\footnotesize, inner sep=4pt, minimum width=24mm},
+      track/.style={draw=sosAccent, thick, rounded corners=2pt, fill=sosAccent!8,
+        align=center, font=\footnotesize, inner sep=4pt, minimum width=30mm},
       arr/.style={-{Stealth[length=2.5mm]}, thick, sosAccent}]
-    \node[stage] (a) {build student\\profile};
-    \node[stage, right=5mm of a] (b) {find chairs \&\\recent papers};
-    \node[stage, right=5mm of b] (c) {match advisors\\(ranked, evidence)};
-    \node[stage, right=5mm of c] (d) {thesis directions\\+ contact email};
+    \node[stage] (a) {raw input\\+ interview};
+    \node[stage, right=6mm of a] (b) {6-dimension\\profile};
+    \node[track, right=8mm of b, yshift=7mm] (u) {University track\\all Tübingen faculties};
+    \node[track, right=8mm of b, yshift=-7mm] (c) {Industry track\\BW companies};
+    \node[stage, right=7mm of u, yshift=-7mm] (o) {map of options\\+ contact draft};
     \draw[arr] (a) -- (b);
+    \draw[arr] (b) -- (u);
     \draw[arr] (b) -- (c);
-    \draw[arr] (c) -- (d);
+    \draw[arr] (u) -- (o);
+    \draw[arr] (c) -- (o);
   \end{tikzpicture}
   \end{center}
-  \vspace{0.5em}
   \begin{itemize}
-    \item Input can be as thin as \emph{``I like deep learning and robotics''}
-      --- the agent interviews the student to fill the gaps
-    \item Every recommendation cites its evidence: papers, people, group pages
-    \item The output coaches students toward a \emph{conversation} with the
-      chair, not topic shopping
+    \item Input as thin as \emph{``I like deep learning and robotics''} ---
+      the agent interviews one question at a time to fill the gaps
+    \item Profile dimensions: \emph{interests $\cdot$ methods $\cdot$ domain
+      $\cdot$ thesis style $\cdot$ skills $\cdot$ no-gos}
+    \item Every option is grouped by interest, carries a fit rationale and
+      dated evidence, and ends with an honest coverage caveat
   \end{itemize}
 \end{frame}
 
-\begin{frame}{The data layer: a curated, public researcher tree}
+\begin{frame}{The core IP: a search method, not a store}
   \begin{columns}[T]
     \begin{column}{0.46\textwidth}
       \begin{center}
       \begin{tikzpicture}[
           node distance=4mm,
           n/.style={draw=sosDark, thick, rounded corners=2pt, fill=sosDark!6,
-            font=\small, inner sep=4pt, minimum width=30mm, align=center},
+            font=\small, inner sep=4pt, minimum width=34mm, align=center},
           arr/.style={-{Stealth[length=2.5mm]}, thick, sosAccent}]
-        \node[n] (p) {Professor / chair};
-        \node[n, below=of p] (r) {PhDs, postdocs,\\researchers};
-        \node[n, below=of r] (w) {Recent papers};
+        \node[n] (p) {\textbf{Pass 1}\\filter faculty backbone\\(official listing pages)};
+        \node[n, below=of p] (r) {\textbf{Pass 2}\\live web enrichment\\per chair / group};
+        \node[n, below=of r] (w) {map of options\\grouped by interest};
         \draw[arr] (p) -- (r);
         \draw[arr] (r) -- (w);
       \end{tikzpicture}
@@ -141,84 +173,93 @@
     \end{column}
     \begin{column}{0.52\textwidth}
       \small
+      The value over ``just ask Claude'' lives in two curated references the
+      skill carries:
       \begin{itemize}
-        \item Built only from \textbf{already-public} sources: OpenAlex,
-          publication records, official team pages
-        \item Stored as plain, reviewable Markdown --- every entry carries
-          provenance, dates, and uncertainty flags
-        \item Refreshed by an automated monthly job as a reviewable change
-          request; manual corrections are never silently overwritten
-        \item Validated against hand-verified ground truth for pilot chairs,
-          then scaled to all 47 professors
+        \item \textbf{Faculty backbone} --- the official
+          \texttt{uni-tuebingen.de} listing pages per faculty, crawled first
+          so discovery starts from the real org chart
+        \item \textbf{Search strategy} --- the reusable mapping from profile
+          dimensions to precise queries, plus filters, dedup, and routing
       \end{itemize}
+      A parallel $\sim$100-company BW backbone anchors the industry track.
+      Everything is plain, reviewable Markdown. \alert{No runtime database.}
     \end{column}
   \end{columns}
 \end{frame}
 
-\begin{frame}{How this answers the concerns you raised}
-  \renewcommand{\arraystretch}{1.35}
+\begin{frame}{Why no database}
+  \renewcommand{\arraystretch}{1.3}
   \small
-  \begin{tabular}{@{}p{0.44\textwidth}p{0.5\textwidth}@{}}
+  \begin{center}
+  \begin{tabular}{@{}p{0.46\textwidth}p{0.46\textwidth}@{}}
     \toprule
-    \textbf{You told us\ldots} & \textbf{So we\ldots} \\
+    \textbf{Database approach (abandoned)} & \textbf{Database-less skill (this project)} \\
     \midrule
-    ``Don't build a system we have to use'' & built a student tool; chairs do nothing by default \\
-    ``Read our existing websites instead'' & ingest public pages and publications --- no data entry \\
-    ``Topics are co-created, not browsed'' & surface \emph{research areas and people}, and coach students toward conversation \\
-    ``Too many misdirected inquiries'' & better-matched, better-prepared students $\Rightarrow$ fewer cold, low-signal emails \\
-    ``Will it still exist in 3 years?'' & no chair investment to lose; your websites remain the source of truth \\
+    Goes stale within months               & Always current --- reads the live web \\
+    CS Tübingen only                       & All faculties, immediately \\
+    Needs maintenance                      & Zero ongoing maintenance \\
+    Only covers what is curated            & Covers what is publicly visible \\
+    Does not scale well to other faculties & Companies use the same principle \\
     \bottomrule
   \end{tabular}
+  \end{center}
+  \vspace{0.8em}
+  \begin{center}
+    \alert{The skill is the intelligence; the data comes from the world.}\\
+
+  \end{center}
 \end{frame}
 
 \begin{frame}{Privacy and governance}
   \begin{itemize}
     \item \textbf{Student data never leaves the session.} The profile
-      (interests, transcripts, constraints) exists only in the student's own
+      (interests, coursework, constraints) exists only in the student's own
       agent conversation --- nothing is stored or transmitted by us.
-    \item \textbf{Only public academic data is bundled}: names, roles,
-      publications, and research areas as published by chairs and OpenAlex.
-      We document this policy explicitly with GDPR in mind.
-    \item \textbf{Everything is inspectable.} Data and skills are plain text
-      in a public repository; any chair can review --- or ask to correct ---
-      what is said about their group.
+    \item \textbf{Only public academic data is used}: names, roles, research
+      areas, and publications as published by chairs themselves ---
+      GDPR-conscious by design.
+    \item \textbf{Everything is inspectable.} Skills and references are plain
+      text in a public repository; any chair can review --- or ask us to
+      correct --- what is said about their group.
     \item \textbf{No fabricated numbers.} A hard project rule: no placeholder
       metrics, no invented team sizes or citation counts.
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Where we are, and what happens next}
-  \textbf{Now --- Phase 1: get the data right first}
+\begin{frame}{Where we are, and what comes next}
+  \textbf{Behind us}
   \begin{itemize}
-    \item Pipeline piloted on 3 chairs with hand-verified rosters as ground truth
-    \item Gate before anything else: $\geq$\,90\% recall on pilot rosters,
-      full referential integrity, reproducible golden record
+    \item Talked to professors and understood what actually goes wrong
+    \item Dropped the database idea; built the skill-based tool instead
+    \item Made it cover every Tübingen faculty --- and companies as a second track
   \end{itemize}
   \smallskip
-  \textbf{Then --- Phase 2: optimize the advising behavior}
+  \textbf{Right now}
   \begin{itemize}
-    \item Scale the researcher tree to all 47 professors
-    \item Systematic evaluations: shallow profiles, missing information,
-      degree-program and thesis-scope constraints (B.Sc.\ vs.\ M.Sc.)
+    \item Making the tool genuinely \emph{good}, not just working: refining how
+      it searches and improving our \alert{evaluation pipeline} that measures
+      how well it finds the right chairs
   \end{itemize}
   \smallskip
-  \textbf{Ordering principle:} matching cannot be trusted while the underlying
-  data are incomplete or stale --- so data quality is gated before behavior
-  tuning.
+  \textbf{Still to come}
+  \begin{itemize}
+    \item A hands-on test with a handful of real students
+    \item Getting it into students' hands --- starting with the Fachschaft, and friends
+    \item Any suggestions for that?
+  \end{itemize}
 \end{frame}
 
-\begin{frame}{What we ask of you (very little)}
+\begin{frame}{What we ask the professors (very little)}
   \begin{enumerate}
     \item \textbf{Nothing, by default.} The tool works from your public pages
       and publications as they are.
-    \item \textbf{Optionally:} a handful of research-area keywords --- data
-      that rarely needs revision. No logins, no dashboards, and a hard rule of
-      \alert{no reminder emails}.
-    \item \textbf{Feedback:} if inquiries you receive start arriving
-      better-prepared, we would like to hear it --- that is our success metric,
-      not platform adoption.
+    \item \textbf{Optionally:} a few research-area keywords, or a plain
+      ``looking for / not looking for'' note.
+    \item \textbf{Feedback:} if the inquiries you receive start arriving
+      better-prepared, tell us --- that is our success metric.
   \end{enumerate}
-  \vspace{1em}
+  \vspace{0.6em}
   \begin{center}
     \alert{Students get better discovery. You get fewer but better inquiries.\\
     Nobody is forced to maintain anything.}
