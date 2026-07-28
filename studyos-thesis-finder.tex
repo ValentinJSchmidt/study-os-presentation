@@ -45,19 +45,19 @@
       \textbf{Professors}
       \begin{itemize}
         \item Receive far more inquiries than they can supervise \\ (one chair: 50+ inquiries for 20 slots)
-        \item Spend time writing rejections they regret
+        \item Lose time on rejection emails for mismatched inquiries
         \item Get low-signal first contacts that miss the chair's actual research
       \end{itemize}
     \end{column}
   \end{columns}
   \vspace{1em}
   \begin{center}
-    \alert{Both sides lose to the same failure: a broken cold start.}
+    \alert{Students and professors both lose when the first contact is poorly matched.}
   \end{center}
 \end{frame}
 
 \begin{frame}{What 27 professors told us --- before we built anything}
-  We interviewed 27 professors in CS department. The verdict on a classic
+  We interviewed 27 professors in the CS department. The verdict on a classic
   \emph{topic-listing platform} was blunt:
   \begin{itemize}
     \item \textbf{$\sim$50\%} do not want a central platform --- either already
@@ -97,8 +97,8 @@
       read what already exists, ask chairs for nothing.}
       \smallskip
 
-      So we stopped maintaining data and started packaging \emph{how to
-      search} --- a portable agent skill, live web as the only data source.
+      So instead of maintaining data, we packaged \emph{the search process}:
+    a portable agent skill that uses the live web as its source of truth.
     \end{column}
   \end{columns}
 \end{frame}
@@ -109,8 +109,8 @@
     \alert{no database to keep fresh}.
   \end{center}
   Setup is copy-and-paste: drop the skill folder into any standard AI agent
-  (Claude, ChatGPT, Gemini) and type \texttt{thesis-finder} --- no install, no
-  account. From there the skill \alert{takes the student by the hand}:
+  (Claude, ChatGPT, Gemini). No database, no account, no custom app. The student
+  just asks for thesis help, and the agent \alert{walks them through three steps}:
   \begin{enumerate}
     \item \textbf{Formulate} --- a guided interview turns vague interests into
       a structured six-dimension profile
@@ -147,7 +147,7 @@
     \item Input as thin as \emph{``I like deep learning and robotics''} ---
       the agent interviews one question at a time to fill the gaps
     \item Profile dimensions: \emph{interests $\cdot$ methods $\cdot$ domain
-      $\cdot$ thesis style $\cdot$ skills $\cdot$ no-gos}
+      $\cdot$ thesis style $\cdot$ skills $\cdot$ no-go's}
     \item Every option is grouped by interest, carries a fit rationale and
       dated evidence, and ends with an honest coverage caveat
   \end{itemize}
@@ -219,8 +219,7 @@
       areas, and publications as published by chairs themselves ---
       GDPR-conscious by design.
     \item \textbf{Everything is inspectable.} Skills and references are plain
-      text in a public repository; any chair can review --- or ask us to
-      correct --- what is said about their group.
+      text in a public repository; therefore easily adaptable by hand or AI agent.
     \item \textbf{No fabricated numbers.} A hard project rule: no placeholder
       metrics, no invented team sizes or citation counts.
   \end{itemize}
@@ -230,7 +229,7 @@
   \textbf{Behind us}
   \begin{itemize}
     \item Talked to professors and understood what actually goes wrong
-    \item Dropped the database idea; built the skill-based tool instead
+    \item Dropped the full-stack app; built the skill-based tool instead
     \item Made it cover every Tübingen faculty --- and companies as a second track
   \end{itemize}
   \smallskip
@@ -244,7 +243,7 @@
   \textbf{Still to come}
   \begin{itemize}
     \item A hands-on test with a handful of real students from different faculties, to see if the tool actually helps them find a thesis
-    \item Getting it into students' hands --- starting with the CS Fachschaft, and maybe Univeristy-Website?
+    \item Getting it into students' hands --- starting with the CS Fachschaft and Bachelor's/Master's thesis information session.
   \end{itemize}
 \end{frame}
 
