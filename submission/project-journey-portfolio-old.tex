@@ -36,25 +36,61 @@ the hands of real students --- the protocol is ready, the test hasn't run yet.
 group, an early proposal/sketch/user story --- plus why it seemed promising and
 what needed checking next.}
 
-\begin{infobox}[We solve $X$ for $Y$ by doing $Z$]
-We solve the problem of a centralized thesis list for students and professors, by building a centralized interface for students to find their perfect thesis topic and for professors to list their recent thesis topics.
-\end{infobox}
+\subsection*{What we have}
+\begin{itemize}
+  \item Initial idea: a hosted web platform that matches students to thesis
+    advisors --- student profiles on one side, a database of chairs and thesis
+    topics on the other, classic matching-product architecture (backend +
+    database + frontend).
+  \item Target group: students at our university searching for a thesis,
+    starting with computer science.
+  \item First problem idea: the start of a thesis search is painful ---
+    information is scattered, students don't know their options.
+  \item Initial assumptions (implicit at the time, worth stating explicitly
+    because they all broke later): (a)~a central platform is the right vehicle,
+    (b)~professors/chairs will participate and list topics, (c)~the database can
+    be kept fresh.
+  \item The app was built to roughly 90\,\% feature-completeness before we
+    abandoned it --- that's an honest and interesting data point for the
+    portfolio, not something to hide.
+\end{itemize}
 
-Our initial idea was a full-stack web app for students and professors. The professors could easily list their recent thesis topics while the students can 
-search over the list of available topics and find their most suitable match. The motivation came from out own experience of searching and finding a suitable thesis topic. At the university there are multiple different data sources like the official university 
-website, alma and additionally most of the professors also have a private lab based website. 
-Our first hypothesis was, that the major problem is that there is no single source of truth. 
-Therefore we have planned and developed a first full-stack prototype, with a backend, a database and a web frontend. Since we are in the age of AI, we also planned to integrate a full custom AI agent with custom tool calls, that could supervise students during the search process and the exploration of their own possibilities and goals for their thesis. 
-There we fell into the trap that we as software engineers love to build complex systems, just because we can, not because it is actually needed.\\
-Our initial target group were students and professors of the Department of Computer Science at the University of Tuebingen. 
-We treated the students as the demand side and the professors as the supply side of our platform. After discussing the initial idea in the course a lot of students thought that the idea was promising, because a lot of them faced the same problem in their bachelor studies. Common stories were that students were frustrated in the end, because they didn't know about specific chairs, 
-which might have been the perfect fit for their interests and skills. Another main point was that a lot of students reached out to professors, but didn't get a response.
-At this point we hadn't done the user research for the supply side yet, so we only had the students perspective and the perspective of Professor Gehler.\\
+\subsection*{Evidence to attach}
+\begin{itemize}
+  \item Pre-pivot architecture/status snapshot:
+    \repofile{docs/thesis-report/00-problem-and-research/2026-06-09-project-context-pre-pivot.md}
+  \item First entry of the decision log:
+    \repofile{docs/thesis-report/decision-log.md}
+  \item Early plan and outreach documents: various private conversations ---
+    please request them if you need them to rate the submission, but since they
+    are private data we cannot release them publicly.
+\end{itemize}
 
-To mitigate this discrepancy, we planned a user studys for professors, where they could give us their point of view, without rating the actual idea itself. We wanted to understand the reasons behind the missing thesis list and if it is intended or just fell of due to the lack of time.
+\subsection*{So what (draft)}
+\begin{itemize}
+  \item Promising because the pain is universally recognized among students, and
+    ``matching platform'' is a well-understood product shape that felt buildable.
+\end{itemize}
 
-While the whole application got stripped apart during the process of the course, the initial idea was a good starting point and a problem worth solving.
+\subsection*{Now what (draft)}
+\begin{itemize}
+  \item The obvious next check: is there actual demand on both sides --- do
+    students want this, and will professors participate?
+\end{itemize}
 
+\begin{openbox}
+\begin{itemize}
+  \item What was the actual trigger for this project --- our own thesis-search
+    frustration, the course prompt, something else? The motivation has to feel
+    real, not retro-fitted.
+  \item Does one genuinely early artifact survive (first slide deck, sketch, or
+    user story)? The assignment explicitly wants one piece of early evidence ---
+    pick the single best one to include.
+  \item Can we reconstruct the very first ``we aim to solve X for Y by doing Z''
+    sentence as we would have written it on day one? We need it as the baseline
+    that Section~3 shows changing.
+\end{itemize}
+\end{openbox}
 
 % ---------------------------------------------------------------------------
 \section{Discovering and Understanding Users}

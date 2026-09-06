@@ -66,6 +66,31 @@
   \end{tcolorbox}
 }
 
+\NewDocumentEnvironment{infobox}
+  { O{Open --- needs the team} O{} }
+{%
+  \begin{tcolorbox}[
+    breakable,
+    colback=white,
+    colframe=black,
+    colbacktitle=black!8,
+    coltitle=black,
+    boxrule=0.4pt,
+    titlerule=0pt,
+    left=0.6em,
+    right=0.6em,
+    top=0.5em,
+    bottom=0.5em,
+    title={#1},
+    fonttitle=\bfseries\small,
+    sharp corners,
+    #2
+  ]\small
+}{%
+  \end{tcolorbox}
+}
+
+
 % Status markers for the submission checklist.
 \newcommand{\stdone}{\ding{51}}
 \newcommand{\stpartial}{\ding{108}}
