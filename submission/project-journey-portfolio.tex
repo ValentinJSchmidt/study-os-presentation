@@ -193,66 +193,52 @@ why, and the fit between users, context, and problem.}
 \asks{solution concept, value proposition, alternatives considered, feature
 prioritization, and the fit between users, problem, and solution.}
 
-\subsection*{What we have}
-\begin{itemize}
-  \item Solution concept: a portable, database-free \textbf{agent skill package}
-    --- markdown instructions that teach an LLM how to interview a student about
-    interests/skills/constraints and then search the live web in two passes
-    (discover candidates from multiple source axes, then verify and enrich each
-    one), producing a \textbf{map of options} with rationale and evidence, not a
-    single answer.
-  \item Value proposition (draft, needs a group-agreed sentence): always current
-    because it reads the live web, covers all faculties immediately, requires
-    zero maintenance, and lives inside the tool students already use --- no
-    separate app to install or account to create.
-  \item Alternatives considered, documented: the original app with database
-    (built, abandoned); a database-backed skill vs.\ the database-free skill ---
-    genuinely contested inside the team, resolved by pursuing both in parallel
-    until testing showed no-DB wins on both user value and maintenance cost.
-  \item Why it beats ``just ask Claude'': the skill carries encoded discovery
-    rules (source axes, verification checks, interview discipline) --- this was
-    reasoned out explicitly and later measured (Section~6).
-  \item Feature prioritization, documented: university arm first and proven,
-    companies as a second phase on the same principle, other universities and
-    Bachelor's theses explicitly out of scope.
-  \item The concept was deliberately stress-tested against named risks before we
-    committed to it.
-\end{itemize}
+As described in Section~3, we have changed the problem definition from a tool for professors and students to a tool for students only. After we've evaluated the answers from the professors, it became quite clear that they are not interested in the centralized app solution. Mainly because they don't want the overhead, and they want to get to know the student to find a suitable thesis.
+Since the initial idea was built on the supply of the professors, we had to rethink our approach, because the problem for the students still exists. The core problem is not the absence of a central thesis-topic list. Students often lack the context to decide which chair or company fits their interests, methods, skills, constraints, and thesis style. This makes thesis search highly individual: students need guided matching, not just another static list. Since this problem is highly individual and needs deep information about the user, we thought about a private assistant.
+We initially stuck to the idea of a full-stack app, with a parser that extracts the information from the professors' websites and then presents it to the user. After we presented our idea, the resulting reaction was again: "Why not just a Skill?" For us, it was quite new that we "just" use a markdown file to describe the task and an LLM will do the rest. 
+After further discussion in the team, we really embraced the idea of a Skill, because a Skill can be extended by anyone, not only technical users. Additionally, we don't have to think about security, privacy, deployment, and cloud billing since this is already handled by your LLM provider of choice. This realization then led to the initial 
+implementation of our first skill architecture, with a markdown database of all possible professors, including their recent papers, teams, and their research topics. The skill then used this information to answer student-specific questions in a conversational way. 
+During this phase, we thought deeply about what information is actually necessary to provide high-quality answers. We have developed a 6-dimensional scheme, which needs to be answered before the student gets any recommendation from the LLM. The 6 dimensions are
 
-\subsection*{Evidence to attach}
-\begin{itemize}
-  \item Full solution vision:
-    \repofile{docs/thesis-report/01-the-pivot/2026-06-26-vision-no-db.md}
-  \item Risk grilling with decisions:
-    \repofile{findings/no_db_universal_skill/2026-06-26-concept-and-risks.md}
-  \item Scope and ordering rationale: \repofile{MASTERPLAN.md} §1--4
-\end{itemize}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|l|p{10cm}|}
+    \hline
+ Dimension & Name & Description \\
+    \hline
+ 1 & Interests & Core research areas or topics \\
+    \hline
+ 2 & Methods & How the student wants to work, e.g. empirical, qualitative, computational \\
+    \hline
+ 3 & Domain & Application field, e.g. healthcare, education, finance, automotive \\
+    \hline
+ 4 & Thesis style & Preferred output type, e.g. experimental, theoretical, systems, analysis, survey, mixed \\
+    \hline
+ 5 & Skills & Concrete tools or competencies, e.g. Python, ML frameworks, lab methods \\
+    \hline
+ 6 & No-gos & Hard exclusions, e.g. hardware setup, pure proofs, large-scale software engineering \\
+    \hline
+  \end{tabular}
+\end{table}
 
-\subsection*{So what (draft)}
-\begin{itemize}
-  \item Chosen because it is the only direction that fits every constraint the
-    refined problem imposed --- everything database-shaped fails on maintenance,
-    everything app-shaped fails on adoption.
-\end{itemize}
+In our opinion, those 6 dimensions are the most important cornerstones for a successful thesis search.
 
-\subsection*{Now what (draft)}
-\begin{itemize}
-  \item The proposal directly produced the build plan: prove the university arm
-    against a ground truth and a plain-Claude baseline before extending anywhere
-    else.
-\end{itemize}
+\noindent The biggest task here was "Why should a student use our skill and not just plain Claude/Codex?" The answer to 
+this question is that our skill is not a "give me the answer as fast as possible", but it emulates a session with a professional study coordinator that explicitly tries
+to find the best possible match for the individual student.
 
-\begin{openbox}
-\begin{itemize}
-  \item Agree on the one-sentence value proposition --- the assignment asks for
-    it verbatim and the checklist checks for it.
-  \item Were any alternatives seriously discussed beyond app-with-DB vs.\
-    skill-without-DB (e.g.\ keeping the app but dropping the DB, a browser
-    extension, plain prompt templates)? If yes, name them and why they lost; if
-    no, say the decision space was really those two.
-\end{itemize}
-\end{openbox}
+After we have implemented this orchestrated multi-dimensional skill, we've tested it thoroughly and recognized that the markdown database needs to be maintained in some way, which we wanted to avoid in the first place. We extended our current prototype and built a database-less approach, where we are utilizing
+the commonly used web search tool of the LLM providers to find the most suitable professors and their research topics. This approach has the advantage that we don't have to maintain a database, which can be costly and error-prone if, e.g., new Professors join or old ones leave the Department of Computer Science. 
+The biggest disadvantage here was that the search tool introduces even more uncertainty and non-deterministic behavior into the skill. To mitigate this, we have built explicit search templates to get the most relevant information from the web search.
+We conducted a field study and let the course test
+both skills, the one with the markdown database and the one without. After evaluating the results, we received feedback that our skill without the database is more useful. This led to the final decision of removing the Markdown database and using the slimmer version with the minimal maintenance overload.
+Another finding during the field study was that some students also want to do a thesis in a company. Therefore, we extended the skill to also provide suitable thesis topics from companies in Baden-Württemberg.
 
+Since the skill is more uncertain, and a session takes longer than 30 minutes, we decided to use some automated testing. Therefore, we built evals as well as an orchestrated skill set to run end-to-end simulations with an LLM-as-a-judge to evaluate the actual performance. These automated tests gave a major boost in confidence and implementation speed, since the agent can now fully simulate actual conversations.
+In order to make this representative, we designed multiple fictitious students
+from different backgrounds and with different skill sets and answer styles. 
+
+Our final product is a low-maintenance, database-free skill package that guides students from vague thesis interests to evidence-backed university or company options, without requiring professors to maintain yet another platform.
 % ---------------------------------------------------------------------------
 \section{Building}
 
