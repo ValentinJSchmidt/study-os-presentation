@@ -32,9 +32,11 @@ the hands of real students --- the protocol is ready, the test hasn't run yet.
 % ---------------------------------------------------------------------------
 \section{Initial Project Idea}
 
+\begin{openbox}[NEEDS TO BE DELETED AFTER THE PORTFOLIO IS DONE]
 \asks{initial idea, motivation, initial assumptions, first problem idea, target
 group, an early proposal/sketch/user story --- plus why it seemed promising and
 what needed checking next.}
+\end{openbox}
 
 \begin{infobox}[We solve $X$ for $Y$ by doing $Z$]
 We solve \textbf{topic discovery} for \textbf{thesis students} by \textbf{bringing open theses into one place}
@@ -190,13 +192,20 @@ why, and the fit between users, context, and problem.}
 % ---------------------------------------------------------------------------
 \section{Proposing a Solution}
 
-\asks{solution concept, value proposition, alternatives considered, feature
-prioritization, and the fit between users, problem, and solution.}
+\begin{openbox}[NEEDS TO BE DELETED AFTER THE PORTFOLIO IS DONE]
+  \asks{solution concept, value proposition, alternatives considered, feature
+  prioritization, and the fit between users, problem, and solution.}
+\end{openbox}
 
-As described in Section~3, we have changed the problem definition from a tool for professors and students to a tool for students only. After we've evaluated the answers from the professors, it became quite clear that they are not interested in the centralized app solution. Mainly because they don't want the overhead, and they want to get to know the student to find a suitable thesis.
+\noindent As described in Section~3, we have changed the problem definition from a tool for professors and students to a tool for students only. After we've evaluated the answers from the professors, it became quite clear that they are not interested in the centralized app solution. Mainly because they don't want the overhead, and they want to get to know the student to find a suitable thesis.
 Since the initial idea was built on the supply of the professors, we had to rethink our approach, because the problem for the students still exists. The core problem is not the absence of a central thesis-topic list. Students often lack the context to decide which chair or company fits their interests, methods, skills, constraints, and thesis style. This makes thesis search highly individual: students need guided matching, not just another static list. Since this problem is highly individual and needs deep information about the user, we thought about a private assistant.
-We initially stuck to the idea of a full-stack app, with a parser that extracts the information from the professors' websites and then presents it to the user. After we presented our idea, the resulting reaction was again: "Why not just a Skill?" For us, it was quite new that we "just" use a markdown file to describe the task and an LLM will do the rest. 
-After further discussion in the team, we really embraced the idea of a Skill, because a Skill can be extended by anyone, not only technical users. Additionally, we don't have to think about security, privacy, deployment, and cloud billing since this is already handled by your LLM provider of choice. This realization then led to the initial 
+
+
+\noindent We initially stuck to the idea of a full-stack app, with a parser that extracts the information from the professors' websites and then presents it to the user. After we presented our idea, the resulting reaction was again: "Why not just a Skill?" For us, it was quite new that we "just" use a markdown file to describe the task and an LLM will do the rest. 
+After further discussion in the team, we really embraced the idea of a Skill, because a Skill can be inspected and adapted through plain Markdown, lowering the barrier for future maintainers.
+
+
+Additionally, we don't have to think about security, privacy, deployment, and cloud billing since this is already handled by your LLM provider of choice. This realization then led to the initial 
 implementation of our first skill architecture, with a markdown database of all possible professors, including their recent papers, teams, and their research topics. The skill then used this information to answer student-specific questions in a conversational way. 
 During this phase, we thought deeply about what information is actually necessary to provide high-quality answers. We have developed a 6-dimensional scheme, which needs to be answered before the student gets any recommendation from the LLM. The 6 dimensions are
 
@@ -221,24 +230,29 @@ During this phase, we thought deeply about what information is actually necessar
   \end{tabular}
 \end{table}
 
-In our opinion, those 6 dimensions are the most important cornerstones for a successful thesis search.
+\noindent In our opinion, those 6 dimensions are the most important cornerstones for a successful thesis search.
 
 \noindent The biggest task here was "Why should a student use our skill and not just plain Claude/Codex?" The answer to 
 this question is that our skill is not a "give me the answer as fast as possible", but it emulates a session with a professional study coordinator that explicitly tries
 to find the best possible match for the individual student.
 
-After we have implemented this orchestrated multi-dimensional skill, we've tested it thoroughly and recognized that the markdown database needs to be maintained in some way, which we wanted to avoid in the first place. We extended our current prototype and built a database-less approach, where we are utilizing
+
+\noindent After we have implemented this orchestrated multi-dimensional skill, we've tested it thoroughly and recognized that the markdown database needs to be maintained in some way, which we wanted to avoid in the first place. We extended our current prototype and built a database-less approach, where we are utilizing
 the commonly used web search tool of the LLM providers to find the most suitable professors and their research topics. This approach has the advantage that we don't have to maintain a database, which can be costly and error-prone if, e.g., new Professors join or old ones leave the Department of Computer Science. 
 The biggest disadvantage here was that the search tool introduces even more uncertainty and non-deterministic behavior into the skill. To mitigate this, we have built explicit search templates to get the most relevant information from the web search.
 We conducted a field study and let the course test
 both skills, the one with the markdown database and the one without. After evaluating the results, we received feedback that our skill without the database is more useful. This led to the final decision of removing the Markdown database and using the slimmer version with the minimal maintenance overload.
 Another finding during the field study was that some students also want to do a thesis in a company. Therefore, we extended the skill to also provide suitable thesis topics from companies in Baden-Württemberg.
 
-Since the skill is more uncertain, and a session takes longer than 30 minutes, we decided to use some automated testing. Therefore, we built evals as well as an orchestrated skill set to run end-to-end simulations with an LLM-as-a-judge to evaluate the actual performance. These automated tests gave a major boost in confidence and implementation speed, since the agent can now fully simulate actual conversations.
+
+
+\noindent Since the skill is more uncertain, and a session takes longer than 30 minutes, we decided to use some automated testing. Therefore, we built evals as well as an orchestrated skill set to run end-to-end simulations with an LLM-as-a-judge to evaluate the actual performance. These automated tests gave a major boost in confidence and implementation speed,
+since the agent can now fully simulate actual conversations.
 In order to make this representative, we designed multiple fictitious students
 from different backgrounds and with different skill sets and answer styles. 
 
-Our final product is a low-maintenance, database-free skill package that guides students from vague thesis interests to evidence-backed university or company options, without requiring professors to maintain yet another platform.
+
+\noindent Our final product is a low-maintenance, database-free skill package that guides students from vague thesis interests to evidence-backed university or company options, without requiring professors to maintain yet another platform.
 % ---------------------------------------------------------------------------
 \section{Building}
 
