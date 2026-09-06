@@ -1,0 +1,84 @@
+% Shared style for the StudyOS Thesis-Finder course submissions.
+% Included by every submission document via \input{preamble}.
+% Plain black-and-white house style: no colour, prints identically in mono.
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[english]{babel}
+\usepackage{microtype}
+\usepackage[a4paper,margin=2.4cm]{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable,skins}
+\usepackage{pifont}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+
+\urlstyle{tt}
+
+% --- Palette (plain black and white) ----------------------------------------
+% Everything is black on white; the only greys are for a hairline rule and the
+% callout title bar, so the documents print identically in mono.
+\definecolor{sosAccent}{gray}{0}
+\definecolor{sosDark}{gray}{0}
+\definecolor{sosOpen}{gray}{0}
+\definecolor{sosOpenBg}{gray}{1}
+\definecolor{sosRule}{gray}{0.6}
+
+% --- Headings ---------------------------------------------------------------
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries\itshape}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.1\baselineskip}{0.35\baselineskip}
+\titlespacing*{\subsection}{0pt}{0.7\baselineskip}{0.2\baselineskip}
+
+\setlist[itemize]{leftmargin=1.2em,itemsep=0.15em,topsep=0.25em,parsep=0pt}
+\setlist[enumerate]{leftmargin=1.4em,itemsep=0.15em,topsep=0.25em,parsep=0pt}
+
+% --- Semantic helpers -------------------------------------------------------
+% Inline reference to a file or path inside the project repository.
+\newcommand{\repofile}[1]{\path{#1}}
+
+% One "the assignment asks for ..." lead-in line.
+\newcommand{\asks}[1]{\noindent\textbf{Assignment asks for:} #1\par\vspace{0.3em}}
+
+% Open question the team still has to answer (was <mark>highlighted</mark> in the
+% markdown draft).
+\newenvironment{openbox}[1][Open --- needs the team]{%
+  \begin{tcolorbox}[
+    breakable,
+    colback=white,
+    colframe=black,
+    colbacktitle=black!8,
+    coltitle=black,
+    boxrule=0.4pt,
+    titlerule=0pt,
+    left=0.6em,right=0.6em,top=0.5em,bottom=0.5em,
+    title={#1},
+    fonttitle=\bfseries\small,
+    sharp corners,
+  ]\small
+}{%
+  \end{tcolorbox}
+}
+
+% Status markers for the submission checklist.
+\newcommand{\stdone}{\ding{51}}
+\newcommand{\stpartial}{\ding{108}}
+\newcommand{\stgap}{\ding{55}}
+
+% Title block.
+\newcommand{\sostitle}[3]{%
+  \begin{center}
+    {\LARGE\bfseries #1}\\[0.35em]
+    {\large\itshape #2}\\[0.5em]
+    {\small #3}
+  \end{center}
+  \vspace{0.4em}
+  {\color{sosRule}\hrule height 0.4pt}
+  \vspace{0.9em}
+}
