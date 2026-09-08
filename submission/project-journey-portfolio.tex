@@ -59,7 +59,7 @@ While the whole application got stripped apart during the process of the course,
 
 
 
-% ---------------------------------------------------------------------------
+% --------------------------------------------------------------------------- Section 2
 \section{Discovering and Understanding Users}
 
 \asks{user groups discovered and selected, how they were reached, the research
@@ -71,22 +71,27 @@ the initial idea alone couldn't tell us, and how that shaped the direction.}
   \item Two user groups, and this distinction matters for the story: students
     are the demand side, professors/chairs are the supply side a platform would
     depend on.
-  \item We interviewed a substantial number of professors. Main documented
+  \item We interviewed a substantial number of professors via E-Mail. Main documented
     insights:
     \begin{itemize}
       \item Roughly half rejected a central platform outright; only about a
         third were conditionally open to it.
+        Reason for rejetion where that the professors think that fitting a student to a thesis topic is a personal process and that they want to get to know the student first.
       \item A comparable topic-listing platform at the university had already
         failed --- for incentive reasons, not UI reasons: nobody wants to list
         and maintain open topics.
       \item Individual professors reacted much more positively to a different
         framing than to our original platform idea.
+      \item One professor reacted negatively to our e-mail and thought they were too demanding. One important lesson is that when you send out a request to professors, you should be very careful with the wording and the tone of the message.
     \end{itemize}
   \item The course professor later gave feedback that shifted what the product
     is even \emph{for}: the real value is that students reflect on what they
-    want --- not the concrete proposals the tool outputs. That insight is now
-    built into the skill (it records the student's self-understanding before and
-    after the search).
+    want --- not the concrete proposals the tool outputs.
+  \item We also anticipated professors complaining about AI spam, so we instructed the skill to output a clear disclaimer in order to encourage students to atleast modify the generated e-mails and drafts.
+  \item We have tried to reach out to students as well and even set up a survey on SocSci.org to get their feedback on the intial idea and sent it through the mailing list of the fachschaft. However response was slow. Therefore we were limited to informal conversations with fellow students and friends. Most of them are not on the level that they trust AI  completely.
+  However this is not at all a problem, since we also do not want to give students a final answer, but rather a tool that helps them reflect their own interests and skills.
+
+  
 \end{itemize}
 
 \subsection*{Evidence to attach}
@@ -114,10 +119,6 @@ the initial idea alone couldn't tell us, and how that shaped the direction.}
 
 \begin{openbox}
 \begin{itemize}
-  \item How were the interviews actually done --- how were professors selected
-    and reached, was there a fixed question guide or informal conversations, and
-    who conducted them? The repo itself flags that this method was never written
-    down.
   \item What student-side input existed before the pivot? Right now the
     documented pivot evidence is professor-side only, but the product targets
     students --- if we talked to fellow students informally (friends,
@@ -130,38 +131,16 @@ the initial idea alone couldn't tell us, and how that shaped the direction.}
 \end{itemize}
 \end{openbox}
 
-% ---------------------------------------------------------------------------
+% --------------------------------------------------------------------------- Section 3
 \section{Defining the Problem}
 
 \asks{initial vs.\ refined problem definition, which assumptions changed and
 why, and the fit between users, context, and problem.}
 
 \subsection*{What we have}
-\begin{itemize}
-  \item Initial problem definition (implicit): ``students can't find matching
-    advisors $\rightarrow$ build a matching platform.''
-  \item Refined problem definition: the hardest part is the \textbf{cold start}
-    --- thesis information is scattered across chair websites, students don't
-    know what they don't know, and any curated database only covers one faculty
-    and only stays correct while someone maintains it.
-  \item The two questions that triggered the rethink are literally preserved in
-    our meeting notes: \emph{``Do we even need a backend?''} and \emph{``Where's
-    the difference to just using Claude without a skill?''}
-  \item Assumptions that broke, with the evidence that broke them: professor
-    participation (interviews), database freshness (the failed predecessor
-    platform + our own maintenance backlog), and willingness to use a separate
-    external tool (nobody opens yet another app for a one-time task).
-\end{itemize}
+We at first tried to find a problem that fit our rough goal a problem we had and we knew from our own student life. Finding the right bachelor or master thesis can be difficult.  We at first 
 
-\subsection*{Evidence to attach}
-\begin{itemize}
-  \item Raw pivot meeting notes:
-    \repofile{docs/thesis-report/01-the-pivot/2026-06-25-besprechung-notes.md}
-  \item Reframed problem statement:
-    \repofile{docs/thesis-report/01-the-pivot/2026-06-26-vision-no-db.md}
-  \item Decision log entry for the pivot:
-    \repofile{docs/thesis-report/decision-log.md}
-\end{itemize}
+
 
 \subsection*{So what (draft)}
 \begin{itemize}
@@ -175,14 +154,11 @@ why, and the fit between users, context, and problem.}
 \begin{itemize}
   \item The refined problem directly dictates the solution constraints in
     Section~4: no database, no backend, live sources only, all faculties, zero
-    maintenance.
+    maintenance. 
 \end{itemize}
 
 \begin{openbox}
 \begin{itemize}
-  \item Write both problem definitions as one clean sentence each (``We aim to
-    solve X for Y by doing Z''), initial and refined, so the before/after is
-    visible at a glance. Draft them, then agree as a group.
   \item How did the team actually converge on the reframing --- immediate
     agreement or real back-and-forth? One honest sentence about the group
     dynamic belongs here.
@@ -375,6 +351,9 @@ the possible role of AI in maintaining or evolving the project.}
     is itself an AI agent, with a human owner spending $\sim$2\,h/semester
     steering it. This maps exactly onto the assignment's question and should be
     featured, not buried.
+    \item We also extended this formula of an interview and then building a profile to the topic of finding jobs( not only for students) \url{https://github.com/ValentinJSchmidt/german-career-compass-skills}.
+    While almost untested and not as polished, it is a good proof of concept how the abstract idea of the skill can be applied to other domains as well.
+    Using coding agents this is made particularly easy since the general structure can be adapted quite well in a few-shot manner. Being able to craft some useful skills for this almost on the fly can prove very useful if you chose to use LLM for decisions like this.
 \end{itemize}
 
 \subsection*{Evidence to attach}
