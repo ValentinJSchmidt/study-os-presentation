@@ -107,36 +107,27 @@ the initial idea alone couldn't tell us, and how that shaped the direction.}
 % --------------------------------------------------------------------------- Section 3
 \section{Defining the Problem}
 
-\asks{initial vs.\ refined problem definition, which assumptions changed and
-why, and the fit between users, context, and problem.}
 
 \subsection*{What we have}
 We at first tried to find a problem that fit our rough goal a problem we had and we knew from our own student life. Finding the right bachelor or master thesis can be difficult. 
-So at first we thought that the problem was that there was no central list of topic. 
-With the feedback of professors we knew that this was not the real problem and it would not have been maintainable either.
-
-
+At first we thought that the problem was that there was no central list of topic. 
+With the feedback of professors we knew that this was not  a solution to the problem of finding a suitable thesis topic for students and it would not have been maintainable either.
 
 \subsection*{So what (draft)}
 \begin{itemize}
-  \item We therefore discussed mutliple pivots, however we still wanted to build an app. That would have been deployed. It would have been a full-stack app with a database and a backend.
-  \item We discovered our new formulation of the problem : We solve the problem of finding a suitable thesis topic for students by providing a tool that helps 
+  \item We therefore discussed mutliple pivots, however we still wanted to build an app,that would have been deployed. It would have been a full-stack app with a database and a backend.
+  \item We discovered our new formulation of the problem : We solve the problem of finding a suitable thesis topic for students by providing a tool that helps students find and reflect on their thesis by proving information and idea via an LLM.
+  \item For example the app would be able to ingest the transcript of records and then try to build a profile that would be used to find suitable thesis topics.
 \end{itemize}
 
 \subsection*{Now what (draft)}
 \begin{itemize}
-  \item The refined problem directly dictates the solution constraints in
-    Section~4: no database, no backend, live sources only, all faculties, zero
-    maintenance. 
+  \item  We now had a clear idea of the problem and started building an app. We wanted to asses the students based on different axis, like interest or skill. We also scraped papers by the professors and their chairs. This was all done so we might use local models or would have a big database that we could use to answer the studetents questions.
+  \item You can find the app in the git logs of our repository. However since we later decided to not use an app but a skill and then even later pivoted to a skill without any database ( even in text form) whatsoever, we have deleted it from the current iteration of the repository.
+  \item What stuck from this phase was the main idea : Advising students. Also we carried the idea of building a profile of the student first
 \end{itemize}
 
-\begin{openbox}
-\begin{itemize}
-  \item How did the team actually converge on the reframing --- immediate
-    agreement or real back-and-forth? One honest sentence about the group
-    dynamic belongs here.
-\end{itemize}
-\end{openbox}
+
 
 % --------------------------------------------------------------------------- Section 4
 \section{Proposing a Solution}
