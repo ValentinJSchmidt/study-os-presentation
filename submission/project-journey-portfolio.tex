@@ -7,26 +7,20 @@
 
 \begin{document}
 
-\sostitle{Project Journey Portfolio}{StudyOS Thesis-Finder --- working draft}{%
+\sostitle{Project Journey Portfolio}{StudyOS Thesis-Finder}{%
   Group submission \quad\textbullet\quad Dominique, Max, Valentin \quad\textbullet\quad University of Tübingen}
 
-\noindent
-Info-gathering version. Each section mirrors the assignment structure
-(What / Evidence / So what / Now what) and states what we already have from the
-repository. Everything marked in an \textbf{Open} box is a
-question the team still needs to answer --- these are the gaps between what is
-documented and what the assignment explicitly asks for.
-
-\vspace{0.5em}
 \begin{tcolorbox}[colback=white,colframe=sosRule,boxrule=0.6pt,left=0.7em,right=0.7em,top=0.5em,bottom=0.5em]
-\textbf{The journey logic in one paragraph (draft):} We started with a matching
-platform (app + database) for thesis search. Early conversations with professors
-broke the core premise: the supply side won't feed a central platform, and a
-curated database rots. We reframed the problem from ``matching'' to the
-student's cold start, pivoted to a database-free agent skill that searches the
-live web, built and self-evaluated it against a plain-Claude baseline, and
-shipped it as a public, installable package. What's still missing is testing in
-the hands of real students --- the protocol is ready, the test hasn't run yet.
+\textbf{The journey in one paragraph.} We started with a matching platform for
+thesis search, built as an app with a database behind it. Early conversations
+with professors broke that premise, because the supply side will not feed a
+central platform and a curated list rots the moment nobody is paid to keep it
+alive. We reframed the problem from matching students to topics towards the
+student's own cold start, moved to a database-free agent skill that searches the
+live web and published it as an installable package that needs no server and no
+account. The part that never happened is the test with students who are actually
+looking. We ran a session in the course and then a public beta, and apart from
+one written form from our supervisor nobody answered.
 \end{tcolorbox}
 
 % --------------------------------------------------------------------------- Section 1
@@ -57,11 +51,7 @@ While the whole application got stripped apart during the process of the course,
 \section{Discovering and Understanding Users}
 \label{sec:users}
 
-\asks{user groups discovered and selected, how they were reached, the research
-approach, main insights, a persona or user story --- plus what we learned that
-the initial idea alone couldn't tell us, and how that shaped the direction.}
-
-\subsection*{What we have}
+\subsection*{What}
 \begin{itemize}
   \item Two user groups: students
     are the demand side, professors/chairs are the supply side a platform would
@@ -71,14 +61,14 @@ the initial idea alone couldn't tell us, and how that shaped the direction.}
    Main documented
     insights:
     \begin{itemize}
-      \item Roughly half rejected a central platform outright; only about a
+      \item Roughly half rejected a central platform outright and only about a
         third were conditionally open to it.
         Reason for rejection where that the professors think that fitting a student to a thesis topic is a personal process and that they want to get to know the student first.
         One important quote "the old system was the exact opposite: Listing theses was cumbersome. The list wasn’t maintained. And being among the few groups that listed on the central page usually just meant that the less engaged, less informed students would approach you first."
       \item One professor reacted negatively to our e-mail and thought they were too demanding. One important lesson is that when you send out a request to professors, you should be very careful with the wording and the tone of the message.
       \item A comparable topic-listing platform at the university had already
-        failed --- for incentive reasons, not UI reasons: nobody wants to list
-        and maintain open topics. This caused us to shift our product without surveying students, since the supply side is the bottleneck.
+        failed for incentive reasons rather than UI reasons, because nobody wants
+        to list and maintain open topics. This caused us to shift our product without surveying students, since the supply side is the bottleneck.
    
     \end{itemize}
     So we learned that the best way to please professors is to not ask them to do much at all. They can still go on and update their own website, but we don't need their input necessarily. 
@@ -90,15 +80,15 @@ the initial idea alone couldn't tell us, and how that shaped the direction.}
 \end{itemize}
 
 
-\subsection*{So what (draft)}
+\subsection*{So what}
 \begin{itemize}
   \item The initial idea could not have told us that the \emph{supply side} is
     the bottleneck. Interviews revealed the platform premise fails regardless of
-    how good the product is --- participation and freshness are incentive
-    problems, not engineering problems.
+    how good the product is, because participation and freshness are incentive
+    problems rather than engineering problems.
 \end{itemize}
 
-\subsection*{Now what )}
+\subsection*{Now what}
 \begin{itemize}
   \item  The main insight was that the we could not work with a central list, but should focus on what is publicly avaiblable and on the students's side.
   \item This brougt us to the idea of building an advisor that helps students, as detailed in the next section.
@@ -108,19 +98,19 @@ the initial idea alone couldn't tell us, and how that shaped the direction.}
 \section{Defining the Problem}
 
 
-\subsection*{What we have}
+\subsection*{What}
 We at first tried to find a problem that fit our rough goal a problem we had and we knew from our own student life. Finding the right bachelor or master thesis can be difficult. 
 At first we thought that the problem was that there was no central list of topic. 
 With the feedback of professors we knew that this was not  a solution to the problem of finding a suitable thesis topic for students and it would not have been maintainable either.
 
-\subsection*{So what (draft)}
+\subsection*{So what}
 \begin{itemize}
   \item We therefore discussed mutliple pivots, however we still wanted to build an app,that would have been deployed. It would have been a full-stack app with a database and a backend.
   \item We discovered our new formulation of the problem : We solve the problem of finding a suitable thesis topic for students by providing a tool that helps students find and reflect on their thesis by proving information and idea via an LLM.
   \item For example the app would be able to ingest the transcript of records and then try to build a profile that would be used to find suitable thesis topics.
 \end{itemize}
 
-\subsection*{Now what (draft)}
+\subsection*{Now what}
 \begin{itemize}
   \item  We now had a clear idea of the problem and started building an app. We wanted to asses the students based on different axis, like interest or skill. We also scraped papers by the professors and their chairs. This was all done so we might use local models or would have a big database that we could use to answer the studetents questions.
   \item You can find the app in the git logs of our repository. However since we later decided to not use an app but a skill and then even later pivoted to a skill without any database ( even in text form) whatsoever, we have deleted it from the current iteration of the repository.
@@ -131,11 +121,6 @@ With the feedback of professors we knew that this was not  a solution to the pro
 
 % --------------------------------------------------------------------------- Section 4
 \section{Proposing a Solution}
-
-\begin{openbox}[NEEDS TO BE DELETED AFTER THE PORTFOLIO IS DONE]
-  \asks{solution concept, value proposition, alternatives considered, feature
-  prioritization, and the fit between users, problem, and solution.}
-\end{openbox}
 
 \noindent As described in Section~3, we have changed the problem definition from a tool for professors and students to a tool for students only. After we've evaluated the answers from the professors, it became quite clear that they are not interested in the centralized app solution. Mainly because they don't want the overhead, and they want to get to know the student to find a suitable thesis.
 Since the initial idea was built on the supply of the professors, we had to rethink our approach, because the problem for the students still exists. The core problem is not the absence of a central thesis-topic list. Students often lack the context to decide which chair or company fits their interests, methods, skills, constraints, and thesis style. This makes thesis search highly individual: students need guided matching, not just another static list. Since this problem is highly individual and needs deep information about the user, we thought about a private assistant.
@@ -181,7 +166,7 @@ to find the best possible match for the individual student.
 the commonly used web search tool of the LLM providers to find the most suitable professors and their research topics. This approach has the advantage that we don't have to maintain a database, which can be costly and error-prone if, e.g., new Professors join or old ones leave the Department of Computer Science. 
 The biggest disadvantage here was that the search tool introduces even more uncertainty and non-deterministic behavior into the skill. To mitigate this, we have built explicit search templates to get the most relevant information from the web search.
 We conducted a field study and let the course test
-both skills, the one with the markdown database and the one without. After evaluating the results, we received feedback that our skill without the database is more useful. This led to the final decision of removing the Markdown database and using the slimmer version with the minimal maintenance overload.
+both skills, the one with the markdown database and the one without. The feedback from that session was spoken rather than written, and it pointed at the variant without the database as the more useful one. This led to the final decision of removing the Markdown database and using the slimmer version with the minimal maintenance overload. The session itself is described in Section~6.
 Another finding during the field study was that some students also want to do a thesis in a company. Therefore, we extended the skill to also provide suitable thesis topics from companies in Baden-Württemberg.
 
 
@@ -196,195 +181,152 @@ from different backgrounds and with different skill sets and answer styles.
 % --------------------------------------------------------------------------- Section 5
 \section{Building}
 
-The product itself is submitted separately in the Product Artifact ZIP --- per
-the assignment, this section only refers to it.
+\noindent The product itself is submitted separately in the Product Artifact ZIP, so this section only refers to that submission.
 
-One connecting sentence (draft): the build followed the priority order from
-Section~4 --- university discovery first, then a company arm on the same
-no-database principle, then consolidation into a single entry-point skill; the
-ZIP contains the skill package, install guide, and evaluation harness.
+\noindent The build followed the priority order that came out of Section~4. We started with the university arm, added the company arm on the same database-free principle and consolidated both into a single entry-point skill, so that a student does not have to decide up front which of the two paths they need.
 
 % --------------------------------------------------------------------------- Section 6
 \section{Testing}
 
-\asks{what was tested, who tested it, how, main feedback, and problems /
-surprises / confirmations --- with test notes and quotes as evidence.}
-\subsection*{What we have}
-\begin{itemize}
-  \item Extensive \textbf{self-run evaluation} (this is real testing and should
-    be presented as such, but it is not user testing):
-    \begin{itemize}
-      \item Recall/precision measured per faculty against hand-curated ground
-        truth, with the skill scoring far above a plain-Claude baseline.
-      \item A steering test showing that different student profiles genuinely
-        produce different option maps (not one generic answer).
-      \item An independent, deliberately skeptical review that challenged our
-        own ``it works'' verdict and produced a punch list --- including
-        catching that some of our numbers weren't as clean as claimed. Honest
-        material, good for the portfolio.
-      \item A surprise worth telling: our first eval design was circular (the
-        fixture setup let the system be graded on data it had effectively seen)
-        --- we caught it and moved to live evals. That's a genuine ``problem
-        discovered through testing.''
-    \end{itemize}
-  \item \textbf{Informal in-between tests} with people around the project
-    happened, including a hands-on session with the course professor that
-    produced direct feedback --- but these were never written down properly.
-  \item \textbf{Real student beta test: not yet run.} Protocol, capture sheet,
-    and recruiting message are written and ready; nobody outside the project has
-    used the tool independently yet. The portfolio must state this honestly.
-\end{itemize}
+\subsection*{What}
 
-\subsection*{Evidence to attach}
-\begin{itemize}
-  \item Evaluation summary and numbers:
-    \repofile{docs/thesis-report/03-hardening-and-evaluation/README.md},
-    \repofile{findings/no_db_universal_skill/2026-07-03-eval-aggregate-scorecard.md}
-  \item The one clean measurement on the current architecture:
-    \repofile{findings/no_db_universal_skill/2026-08-08-theology-blind-run.md}
-  \item Skeptical review:
-    \repofile{findings/no_db_universal_skill/2026-07-05-fable-1.0-readiness-review.md}
-  \item Beta-test protocol (ready, unexecuted):
-    \repofile{findings/no_db_universal_skill/2026-08-08-beta-test-protocol.md}
-\end{itemize}
+\noindent We tested the skill ourselves throughout, using the invented student
+profiles from Section~4. The profiles from medicine and neurosciences were the
+most useful, because we have no background there and a weak answer shows
+immediately.
 
-\subsection*{So what / Now what}
-\begin{itemize}
-  \item Depends on the open items below --- this section can't be finished until
-    the informal tests are reconstructed and (ideally) the beta test has run.
-\end{itemize}
+\noindent We also compared the skill against chair lists we had curated
+ourselves and against a plain assistant. We do not report those numbers, because
+we wrote both the ground truth and the scoring, and our first design graded the
+skill on material it had already seen. We fixed that, but the benchmark is still
+our own, so we use these runs as a regression check only.
 
-\begin{openbox}
-\begin{itemize}
-  \item Reconstruct each informal test as a proper record: who tested (role is
-    enough, no names needed), what they were asked to do, what they actually
-    said --- ideally one verbatim quote each --- and what surprised us or
-    confirmed our assumptions.
-  \item The professor's hands-on session produced the single most important
-    piece of feedback in the whole project (value = reflection, not proposals).
-    Reconstruct that session concretely: what was demoed, what was said, what
-    changed because of it.
-  \item Decide: do we run the beta test before submission? If yes --- results go
-    here. If no --- the portfolio says the protocol is ready, explains why it
-    hasn't run, and Section~7 carries it as the next step. Either is defensible;
-    silently omitting it is not.
-\end{itemize}
-\end{openbox}
+\noindent A handful of friends and fellow students ran the skill in front of
+us, most of them from computer science. Nothing was recorded, so this is
+reported from memory. Reactions were
+positive and several said they would treat the suggestions as a starting point
+rather than act on them. None of them were choosing a thesis at the time.
+
+\noindent The one test outside that circle was the course session in early July,
+where each team presented its prototype and let the room try it. We brought both
+variants, with and without the markdown database. Spoken feedback was positive
+and the point raised most often was that the tool needs no installation and no
+account, since it runs inside an assistant people already use. The same
+conversations favoured the database-free variant, which is the feedback
+Section~4 refers to. Only the course professor answered in writing.
+
+\noindent He found the results useful, the most useful one being that he had
+``found a new colleague I did not know about''. The interaction he found harder.
+The session ``was asking a lot'' without making clear how much detail was
+expected at which step, and it stopped where he would have wanted help going
+deeper into a single option. The
+form is in Appendix~\ref{app:gehler-feedback}.
+
+\noindent We then published the skill package with an install guide, sent a
+recruiting mail in German and English and linked an anonymous survey. The survey
+asked whether the run had changed how clearly the student sees their own thesis,
+plus relevance, source trust and whether they would contact anyone suggested. We
+asked people whose run had broken off to answer anyway. We received no
+responses. The mail and the survey are in
+Appendix~\ref{app:beta-mail}.
+
+\noindent We also asked Professor Hennig, who had answered our first interview
+round with the most enthusiasm, what he made of the finished tool.
+He has not replied so far.
+
+\subsection*{So what}
+
+\noindent The feedback confirmed the two decisions the project rests on. The
+live search finds things a real user did not know, which is what the
+database-free approach was meant to deliver, and the property people valued most
+in the course was that nothing has to be set up, which is what the skill format
+was chosen for. What the feedback added is where the remaining work is. The
+interview needs to say why it asks what it asks, and starting a session has to
+become as easy as people assumed it already was.
+
+\subsection*{Now what}
+
+\noindent Three changes shipped within a day of the course session. The skill
+states up front what it will ask and why. It offers to pick one option and go
+deeper instead of stopping at the option map. Drafting a contact mail now
+requires reading at least one paper of the chair first. Two requests were
+dropped. Letting professors supply input would have rebuilt the supply-side
+dependency the project had just left, and an example walkthrough would not
+have fixed the session ending too early, which was the actual problem.
 
 % --------------------------------------------------------------------------- Section 7
 \section{Iteration and Next Steps}
 
-\asks{changes made from feedback, changes planned but not done, remaining
-limitations, distribution/shipping strategy, maintenance/handover strategy, and
-the possible role of AI in maintaining or evolving the project.}
+\subsection*{What}
 
-\subsection*{What we have}
-\begin{itemize}
-  \item Changes made based on feedback (pick the 2--3 clearest for the
-    portfolio):
-    \begin{itemize}
-      \item The pivot itself --- the largest feedback-driven change in the
-        project.
-      \item The professor's reframing (``the value is the student's
-        reflection'') was built into the product: the skill now records the
-        student's thesis self-understanding before and after the search.
-      \item Multiple concrete skill fixes that came directly out of eval
-        findings (e.g.\ verification rules that were losing correct candidates).
-    \end{itemize}
-  \item Changes planned but not implemented: the real student beta test;
-    re-measuring the faculties whose numbers predate the architecture change; a
-    designed-but-never-run experiment testing our central claim (that the
-    skill's advantage comes from curated local scope and would erode as scope
-    grows).
-  \item Remaining limitations: only one clean measurement on the current
-    architecture; company arm weaker than the university arm; coverage honesty
-    is a feature but also a limit.
-  \item Distribution/shipping (documented, real): the skill package is publicly
-    released on GitHub with an install guide, and a cold install was tested.
-    Distribution = ``install these markdown folders,'' which is the whole point.
-  \item Maintenance/handover: a survival plan exists --- because the product is
-    markdown-only (no database, no backend, no API keys), almost nothing can
-    rot; main risks are the skill format changing, university sites
-    restructuring, and rules going stale. Estimated cost: a couple of hours per
-    semester. Ownership options are ranked, \textbf{but no owner has been
-    named.}
-  \item Role of AI in maintenance --- we have an unusually strong answer: the
-    repo ships an operating guide written \emph{for future AI agents}
-    (\repofile{AGENTS.md}), so the intended maintainer of this AI-built product
-    is itself an AI agent, with a human owner spending $\sim$2\,h/semester
-    steering it. This maps exactly onto the assignment's question and should be
-    featured, not buried.
-    \item We also extended this formula of an interview and then building a profile to the topic of finding jobs( not only for students) \url{https://github.com/ValentinJSchmidt/german-career-compass-skills}.
-    While almost untested and not as polished, it is a good proof of concept how the abstract idea of the skill can be applied to other domains as well.
-    Using coding agents this is made particularly easy since the general structure can be adapted quite well in a few-shot manner. Being able to craft some useful skills for this almost on the fly can prove very useful if you chose to use LLM for decisions like this.
-\end{itemize}
+\noindent Two changes from feedback changed what the product is. The
+first was the pivot described in Sections~2 and~3, when the professor interviews
+ended the platform premise and with it the full-stack application we had already
+built. The second came in August, when we asked our supervisor what mattered more
+to him, the proposals the skill generates or the fact that a student had used it
+to think about what they want to do. He answered that the reflection mattered
+more. The skill now records the student's own description of the thesis they are
+looking for before the search and again afterwards and shows both side by side.
+The three changes from the course test are described in Section~6. What has
+not changed is that the company arm is weaker than the university arm, since
+companies in Baden-W\"urttemberg publish far less about what they would
+supervise than chairs do.
 
-\subsection*{Evidence to attach}
-\begin{itemize}
-  \item Open work and rejected ideas:
-    \repofile{docs/thesis-report/04-open-work/README.md}
-  \item Survival/maintenance plan:
-    \repofile{findings/no_db_universal_skill/2026-08-09-survival-and-maintenance-plan.md}
-  \item Public release + install guide: GitHub release page,
-    \repofile{INSTALL.md}
-  \item Agent maintainer guide: \repofile{AGENTS.md}
-\end{itemize}
+\noindent The skill package is published as a versioned release on GitHub with
+an install guide, and we tested a cold install from the archive alone. It is
+meant to go into a repository of the AI Center, which would give it an address
+that does not depend on us, and we have asked the student advisory service
+whether it could be mentioned at the information events on bachelor theses,
+where students with exactly this question are. That mail is in
+Appendix~\ref{app:seibold-mail} and we are waiting for an answer.
 
-\subsection*{So what (draft)}
-\begin{itemize}
-  \item Candidate for the most important iteration learning: every major
-    improvement came from an outside signal (interviews, professor feedback, the
-    skeptical review) --- never from us admiring our own output. To be
-    confirmed/sharpened by the group.
-    \item We have tried to reach out to students as well and even set up a survey on \url{https://www.soscisurvey.de/} to get their feedback on the intial idea and sent it through the mailing list of the fachschaft. However response was slow. Therefore we were limited to informal conversations with fellow students and friends. All of them gave us positive feedback. One student was also not from Tübingen and from the economic faculty, so we also had some expanded feedback.
-  Most of them are not on the level that they trust AI  completely, however and take the recommendations with a grain of salt.
-  However this is not at all a problem, since we also do not want to give students a final answer, but rather a tool that helps them reflect their own interests and skills.
-\end{itemize}
+\noindent Maintenance is a question we answered by design. The product is a
+folder of Markdown files with no database, no backend, no server, no credentials
+and no build step, so the failure modes that usually end a student project do
+not apply. The repository lives in the \texttt{Tue-StudyOS} organisation on
+GitHub rather than in a private account. Three things can still go stale, which
+are the skill format if the providers change it, the university websites if they
+are restructured and our discovery rules if students start searching
+differently. None of these needs somebody to watch the project, only somebody to
+pick it up on the day it stops working, which we estimate at a couple of hours
+per semester. In that sense the skill is finished, and that is why we do not
+name an owner.
 
-\subsection*{Now what (draft)}
-\begin{itemize}
-  \item If the project continued, the next meaningful step is putting the tool
-    in real students' hands (the beta test) --- because it's the only claim in
-    the whole journey we haven't tested yet.
-\end{itemize}
+\noindent This is also where AI has the clearest role. The repository ships an
+operating guide written for future AI agents rather than for people, in
+\repofile{AGENTS.md}, so the intended maintainer of a product that was largely
+built with agents is itself an agent, with a human spending an hour or two per
+semester steering it and checking the result.
 
-\begin{openbox}
-\begin{itemize}
-  \item Ownership must be resolved for the portfolio: does one of us take the
-    $\sim$2\,h/semester maintenance role, does it go to someone at the
-    university, or do we honestly write ``unowned --- and here is what that
-    means for the product's lifespan''? Any of the three works; the gap can't
-    stay silent.
-  \item Has anything changed since the last documented project state (new runs,
-    new feedback, new decisions)? The portfolio should reflect where we actually
-    are at submission, not where the repo log stops.
-  \item Confirm or replace the ``most important iteration learning'' draft above
-    --- this should be a sentence the whole group stands behind.
-\end{itemize}
-\end{openbox}
+\noindent The last thing we did was test whether any of this is specific to
+theses. The skill is a sequence that does not depend on the subject. It
+interviews the person until a profile exists, searches live sources against that
+profile and hands back options with evidence. So we rebuilt it for career
+advice, at \url{https://github.com/ValentinJSchmidt/german-career-compass-skills}.
+It took a fraction of the original effort, because a coding agent can adapt an
+existing structure from a few examples, and it worked better than we expected.
+It is an early version, but it shows that the transferable result of this
+project is the sequence and not only the thesis finder built on top of it.
 
-% ---------------------------------------------------------------------------
-\section*{Submission checklist --- current status}
-\addcontentsline{toc}{section}{Submission checklist}
+\subsection*{So what}
 
-\renewcommand{\arraystretch}{1.25}
-\noindent\begin{tabularx}{\textwidth}{@{}p{6.2cm}X@{}}
-\toprule
-\textbf{Checklist item} & \textbf{Status} \\
-\midrule
-First problem idea & \stdone{} covered (Section~1) \\
-Initial project idea / proposal & \stdone{} covered --- \emph{needs one early artifact} \\
-Relevant users / user groups & \stdone{} covered --- \emph{needs persona + student-side account} \\
-Initial and refined problem definitions & \stpartial{} content there --- \emph{needs the two one-sentence versions} \\
-Proposed solution + value proposition & \stpartial{} content there --- \emph{needs the agreed one-sentence value prop} \\
-High-level product description & \stdone{} covered (Section~5 + ZIP) \\
-User testing and feedback & \stgap{} weakest point --- \emph{informal tests must be written up; beta decision needed} \\
-Iteration / planned changes & \stdone{} covered (Section~7) \\
-Shipping / access / maintenance strategy & \stdone{} covered --- \emph{except the unresolved owner} \\
-Concrete evidence, not just claims & \stdone{} strong --- repo is full of citable artifacts \\
-Clear and concise structure & pending --- this draft becomes 4--6 pages once gaps close \\
-\bottomrule
-\end{tabularx}
+\noindent The improvements came from two sources. Outside input showed us the
+problem. The professor interviews ended the platform, and a short presentation
+in the course ended the web app, because the reaction was a question we had not
+asked ourselves, which was why we were not simply using a skill. In both cases
+the value was the different vantage point. Our own thinking produced the
+constraints. Dropping the markdown database came from asking who would keep it
+up to date and concluding that the capacity for that would not exist. Nobody
+outside the team raised it. Outside input told us which problem to solve, and
+asking who maintains this in three years told us how to build it.
+
+\subsection*{Now what}
+
+\noindent The next steps are in order. First lower the cost of starting a
+session, since Section~6 shows that this is the barrier. Then run the tool with
+students who are currently looking for a thesis, which is the test we have
+prepared but not yet done. The product itself is complete. What it needs is a reason for somebody to open it,
+and that is a distribution question rather than an engineering one.
 
 % --------------------------------------------------------------------------- Appendix
 \appendix
@@ -501,5 +443,195 @@ is everything we need. Happy to chat directly if that's easier.
 
 \medskip
 \noindent Best regards, [Your name] (Project supervised by Prof.\ Peter Gehler)
+
+
+% --------------------------------------------------------------------------- Appendix B
+\section{Course Test --- Written Feedback}
+\label{app:gehler-feedback}
+
+\noindent Verbatim answers from the feedback form after the in-course prototype
+session in early July. This is the only completed form we received.
+
+\medskip
+\noindent \textbf{How natural did the interaction feel?}\\
+``It was asking a lot. It was not clear how much detail was required at which
+step''
+
+\medskip
+\noindent \textbf{Was it clear why certain chairs, papers, companies, or thesis
+directions were suggested?}\\
+``Yes, very good. Was unexpectedly good. This was good''
+
+\medskip
+\noindent \textbf{How trustworthy did the suggestions feel?}\\
+``Good!''
+
+\medskip
+\noindent \textbf{How well did the skill understand what you are looking for?}
+(1--5)\\
+3
+
+\medskip
+\noindent \textbf{How personally relevant did the recommendations feel?}
+(1--5)\\
+4
+
+\medskip
+\noindent \textbf{What was the most useful output of the skill?}\\
+``Found a new colleague I did not know about.''
+
+\medskip
+\noindent \textbf{What was missing for you to take a real next step after the
+session?}\\
+``I think a bit more follow up help to be offered. Like tell me which one you
+would choose and then walk a bit more down that road. Eg also a bit more clarity
+of what I likely learn.''
+
+\medskip
+\noindent \textbf{Would you use the skill again or recommend it to another
+student?}\\
+``Can a professor provide information for the skill. Eg looking for \dots\ Not
+looking for\dots\ / An example walkthrough, or like \,``Lisa found her thesis
+\dots'' / Example prompts? Maybe explain what info is needed or give
+suggestions''
+
+% --------------------------------------------------------------------------- Appendix C
+\section{Beta Test Recruiting Mail}
+\label{app:beta-mail}
+
+\noindent Sent in German and English. The English version is reproduced here. It
+produced no responses.
+
+\medskip
+\noindent Hi everyone,
+
+\medskip
+\noindent We built a set of AI ``skills'' that help you find a thesis topic and
+supervisor, and we need people to actually try them out and tell us what
+happened.
+
+\medskip
+\noindent \textbf{What it does.} You type one command and it interviews you about
+your interests, methods and constraints, then searches the live web for
+University of T\"ubingen chairs or Baden-W\"urttemberg companies that fit, and
+hands you a map of real options with contact paths. The point is less the list
+than the interview. Most people come out with a sharper idea of what kind of
+thesis fits them than they went in with.
+
+\medskip
+\noindent \textbf{What we need from you:}
+
+\begin{enumerate}[leftmargin=1.4em,itemsep=0.35em]
+  \item Install it. Instructions for every route (Claude, ChatGPT, Gemini, or a
+    terminal agent) are at \url{https://github.com/Tue-StudyOS/study-os-thesis/blob/main/INSTALL.md},
+    downloads at \url{https://github.com/Tue-StudyOS/study-os-thesis/releases/latest}.
+    No account, no signup, nothing installed outside one folder.
+  \item Run it. Type \texttt{thesis-finder} and answer the questions. Plan for
+    20--40 minutes. You need web search enabled in your assistant.
+  \item Fill in the survey, about 4 minutes:
+    \url{https://www.soscisurvey.de/thesis-skill/}
+\end{enumerate}
+
+\noindent We do not receive any of your conversations.
+
+\medskip
+\noindent Please answer the survey even if the run went badly or you broke it off
+halfway. A failed run is a result for us, and those are the answers that actually
+change the tool.
+
+\medskip
+\noindent The survey is anonymous, we don't store IP addresses, and you can stop
+at any point.
+
+\medskip
+\noindent Thanks a lot. Every single response helps.
+
+\medskip
+\noindent Best, Valentin, Maximillian and Dominique
+
+\subsection*{The linked survey}
+
+\noindent Anonymous, hosted on SoSci Survey on German servers with a consent
+page and no IP logging, about four minutes. It received no responses. The
+consent text is omitted here. All batteries are five-point agreement scales.
+
+\medskip
+\noindent \textbf{Before the session compared with now}
+
+\begin{itemize}[leftmargin=1.4em,itemsep=0.2em]
+  \item My idea of my thesis is just as vague now as it was before.
+  \item I have a clearer idea of what kind of thesis would fit me.
+  \item Since the session I have thought about my thesis more concretely than before.
+  \item The session made me reconsider something I thought I wanted.
+  \item Everything it showed me I already knew about.
+  \item I came across directions or research groups I would not have found on my own.
+\end{itemize}
+
+\noindent \textbf{Duration} of the whole run, from the first question to the
+final list. Less than 15 minutes, 15 to 30, 30 to 45, 45 to 60, more than an
+hour.
+
+\medskip
+\noindent \textbf{The chairs, groups or companies shown} (with an additional
+\emph{I cannot judge this} option)
+
+\begin{itemize}[leftmargin=1.4em,itemsep=0.2em]
+  \item The suggestions were concrete enough to act on.
+  \item I intend to contact at least one of the people or places suggested.
+  \item I would trust the information enough to write to one of them.
+  \item Please select ``disagree'' here so we can tell careful answers apart from
+    clicked-through ones. (attention check)
+  \item The suggestions fit what I am actually interested in.
+  \item Most of the suggestions felt generic and could have gone to any student.
+\end{itemize}
+
+\noindent \textbf{The process itself}
+
+\begin{itemize}[leftmargin=1.4em,itemsep=0.2em]
+  \item Answering all the questions felt tedious.
+  \item The questions I was asked were relevant to me.
+  \item It felt like it understood what I actually care about, not just my keywords.
+  \item I would recommend it to a friend who is looking for a thesis topic.
+  \item The time it took was worth what I got out of it.
+\end{itemize}
+
+\noindent \textbf{Free text.} What was the single most useful thing about it?
+What annoyed you, or what did it get wrong? Respondents whose run stopped
+partway were asked to answer anyway and say where it broke off.
+
+% --------------------------------------------------------------------------- Appendix D
+\section{Mail to the Student Advisory Service}
+\label{app:seibold-mail}
+
+\noindent Sent in German and translated here. No answer so far.
+
+\medskip
+\noindent Dear Ms Seibold,
+
+\medskip
+\noindent you will already be familiar with the StudyOS course, and like other
+groups we are now approaching you. We have built several skills for AI agents
+that help a student find a thesis, in T\"ubingen.
+
+\medskip
+\noindent We hope that Prof.\ Gehler will take these skills into a repository of
+the AI Center. It would mean all the more to us if students actually used the
+work, because we believe the skills can be a useful building block in finding a
+suitable thesis.
+
+\medskip
+\noindent We have also taken care not to make it too easy for students, so that
+reflection actually happens and teaching staff are not flooded with AI slop.
+
+\medskip
+\noindent Would it be possible to mention these skills at the information events
+on theses? Or would we have to contact somebody else for that?
+
+\medskip
+\noindent Thank you for communicating so openly with students.
+
+\medskip
+\noindent Best regards, Valentin Schmidt, Maximilian Schnitt, Dominique Meyer
+
 
 \end{document}
