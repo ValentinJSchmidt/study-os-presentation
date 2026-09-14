@@ -18,9 +18,8 @@ central platform and a curated list rots the moment nobody is paid to keep it
 alive. We reframed the problem from matching students to topics towards the
 student's own cold start, moved to a database-free agent skill that searches the
 live web and published it as an installable package that needs no server and no
-account. The part that never happened is the test with students who are actually
-looking. We ran a session in the course and then a public beta, and apart from
-one written form from our supervisor nobody answered.
+account.  We ran a session in the course and then a public beta but we did not receive many replies.
+However the feedback we got ( also one from another professor) was positive and confirmed the two design decisions.
 \end{tcolorbox}
 
 % --------------------------------------------------------------------------- Section 1
@@ -57,23 +56,19 @@ While the whole application got stripped apart during the process of the course,
     are the demand side, professors/chairs are the supply side a platform would
     depend on. We are in the middle and wanted to satisfy both sides.
   \item We interviewed a substantial number of professors via E-Mail.  We sent 4 probe e-mails to professor we knew, then we automatically sent mails to all the professors in the department of computer science. This took place from late April till May.  We received a lot of feedback, which we documented and analyzed. The main insights are summarized below.
-    The E-Mails can be found in the Appendix~\ref{app:prof-interview}. The professors were contacted via the official university e-mail addresses. We sent out two different variants of the e-mail, depending on whether the chair already had a public list esis topics or not. The professors were asked to give us their honest feedback on the current situation and the proposed idea.
+    The E-Mails can be found in the Appendix~\ref{app:prof-interview}. The professors were contacted via the official university e-mail addresses. We sent out two different variants of the e-mail, depending on whether the chair already had a public list of thesis topics or not. The professors were asked to give us their honest feedback on the current situation and the proposed idea.
    Main documented
     insights:
     \begin{itemize}
       \item Roughly half rejected a central platform outright and only about a
         third were conditionally open to it.
         Reason for rejection where that the professors think that fitting a student to a thesis topic is a personal process and that they want to get to know the student first.
-        One important quote "the old system was the exact opposite: Listing theses was cumbersome. The list wasn’t maintained. And being among the few groups that listed on the central page usually just meant that the less engaged, less informed students would approach you first."
-      \item One professor reacted negatively to our e-mail and thought they were too demanding. One important lesson is that when you send out a request to professors, you should be very careful with the wording and the tone of the message.
-      \item A comparable topic-listing platform at the university had already
-        failed for incentive reasons rather than UI reasons, because nobody wants
-        to list and maintain open topics. This caused us to shift our product without surveying students, since the supply side is the bottleneck.
+        A comparable topic-listing platform at the university had already failed for incentive reasons rather than UI reasons as can be seen by this quote: "the old system was the exact opposite: Listing theses was cumbersome. The list wasn’t maintained. And being among the few groups that listed on the central page usually just meant that the less engaged, less informed students would approach you first."
+      \item One professor reacted negatively to our e-mail and thought we were too demanding. One important lesson is that when you send out a request to professors, you should be very careful with the wording and the tone of the message.
    
     \end{itemize}
     So we learned that the best way to please professors is to not ask them to do much at all. They can still go on and update their own website, but we don't need their input necessarily. 
 
-  \item We also anticipated professors complaining about AI spam, so we instructed the skill to output a clear disclaimer in order to encourage students to atleast modify the generated e-mails and drafts.
  
 
   
@@ -105,7 +100,7 @@ With the feedback of professors we knew that this was not  a solution to the pro
 
 \subsection*{So what}
 \begin{itemize}
-  \item We therefore discussed mutliple pivots, however we still wanted to build an app,that would have been deployed. It would have been a full-stack app with a database and a backend.
+  \item We therefore discussed multiple pivots, however we still wanted to build an app,that would have been deployed. It would have been a full-stack app with a database and a backend.
   \item We discovered our new formulation of the problem : We solve the problem of finding a suitable thesis topic for students by providing a tool that helps students find and reflect on their thesis by proving information and idea via an LLM.
   \item For example the app would be able to ingest the transcript of records and then try to build a profile that would be used to find suitable thesis topics.
 \end{itemize}
@@ -127,8 +122,7 @@ Since the initial idea was built on the supply of the professors, we had to reth
 
 
 \noindent We initially stuck to the idea of a full-stack app, with a parser that extracts the information from the professors' websites and then presents it to the user. After we presented our idea, the resulting reaction was again: "Why not just a Skill?" For us, it was quite new that we "just" use a markdown file to describe the task and an LLM will do the rest. 
-After further discussion in the team, we really embraced the idea of a Skill, because a Skill can be inspected and adapted through plain Markdown, lowering the barrier for future maintainers.
-
+After further discussion in the team, we embraced the idea of a Skill, because a Skill can be inspected and adapted through plain Markdown, lowering the barrier for future maintainers.
 
 Additionally, we don't have to think about security, privacy, deployment, and cloud billing since this is already handled by your LLM provider of choice. This realization then led to the initial 
 implementation of our first skill architecture, with a markdown database of all possible professors, including their recent papers, teams, and their research topics. The skill then used this information to answer student-specific questions in a conversational way. 
@@ -168,7 +162,8 @@ The biggest disadvantage here was that the search tool introduces even more unce
 We conducted a field study and let the course test
 both skills, the one with the markdown database and the one without. The feedback from that session was spoken rather than written, and it pointed at the variant without the database as the more useful one. This led to the final decision of removing the Markdown database and using the slimmer version with the minimal maintenance overload. The session itself is described in Section~6.
 Another finding during the field study was that some students also want to do a thesis in a company. Therefore, we extended the skill to also provide suitable thesis topics from companies in Baden-Württemberg.
-
+ 
+\noindent We also anticipated professors complaining about AI spam, so we instructed the skill to output a clear disclaimer in order to encourage students to atleast modify the generated e-mails and drafts.
 
 
 \noindent Since the skill is more uncertain, and a session takes longer than 30 minutes, we decided to use some automated testing. Therefore, we built evals as well as an orchestrated skill set to run end-to-end simulations with an LLM-as-a-judge to evaluate the actual performance. These automated tests gave a major boost in confidence and implementation speed,
@@ -205,15 +200,14 @@ our own, so we use these runs as a regression check only.
 us, most of them from computer science. Nothing was recorded, so this is
 reported from memory. Reactions were
 positive and several said they would treat the suggestions as a starting point
-rather than act on them. None of them were choosing a thesis at the time.
+rather than act on them.
 
 \noindent The one test outside that circle was the course session in early July,
 where each team presented its prototype and let the room try it. We brought both
 variants, with and without the markdown database. Spoken feedback was positive
 and the point raised most often was that the tool needs no installation and no
 account, since it runs inside an assistant people already use. The same
-conversations favoured the database-free variant, which is the feedback
-Section~4 refers to. Only the course professor answered in writing.
+conversations favoured the database-free variant. Only the course professor answered in writing.
 
 \noindent He found the results useful, the most useful one being that he had
 ``found a new colleague I did not know about''. The interaction he found harder.
@@ -230,24 +224,24 @@ asked people whose run had broken off to answer anyway. We received no
 responses. The mail and the survey are in
 Appendix~\ref{app:beta-mail}.
 
-\noindent We also asked the professor who had answered our first interview
-round with the most enthusiasm what they made of the finished tool. The reply
+\noindent We also asked a professor who had answered our first interview
+round what they made of the finished tool. The reply
 came before they had run it, so it judges the approach from our description and
 the repository rather than a session. It called the skill a great idea that
 helps professors as well as students, and expected most students to edit the
-drafted mail before sending it, which is what the disclaimer from
-Section~\ref{sec:users} asks them to do. The exchange is in
+drafted mail, which is what the disclaimer from
+Section~\ref{sec:users} asks them to do. 
+This is the first sign that a product which asks nothing of professors can still be
+something they want to exist, and professors who see a benefit for themselves
+are the people who can point students to it. The exchange is in
 Appendix~\ref{app:prof-reply}.
 
 \subsection*{So what}
 
 \noindent The feedback confirmed the two decisions the project rests on. The
-live search finds things a real user did not know, which is what the
-database-free approach was meant to deliver, and the property people valued most
+live search finds things a real user did not know,  and the property people valued most
 in the course was that nothing has to be set up, which is what the skill format
-was chosen for. What the feedback added is where the remaining work is. The
-interview needs to say why it asks what it asks, and starting a session has to
-become as easy as people assumed it already was.
+was chosen for.
 
 \subsection*{Now what}
 
@@ -257,7 +251,7 @@ deeper instead of stopping at the option map. Drafting a contact mail now
 requires reading at least one paper of the chair first. Two requests were
 dropped. Letting professors supply input would have rebuilt the supply-side
 dependency the project had just left, and an example walkthrough would not
-have fixed the session ending too early, which was the actual problem.
+have fixed the session ending too early, which was the actual problem. Still professors can still list thesis topics on their own website, and the skill will find them.
 
 % --------------------------------------------------------------------------- Section 7
 \section{Iteration and Next Steps}
@@ -285,15 +279,6 @@ whether it could be mentioned at the information events on bachelor theses,
 where students with exactly this question are. That mail is in
 Appendix~\ref{app:seibold-mail} and we are waiting for an answer.
 
-\noindent The design also landed with the side that ended the first version.
-Roughly half of the professors we interviewed had rejected the central platform.
-When we showed the finished skill to one of them, the answer was that it helps
-professors too, ``if it's just by reducing the amount of untargeted mails we
-get''. It is a single reply and not based on a run of the tool, but it is the
-first sign that a product which asks nothing of professors can still be
-something they want to exist, and professors who see a benefit for themselves
-are the people who can point students to it. The exchange is in
-Appendix~\ref{app:prof-reply}.
 
 \noindent Maintenance is a question we answered by design. The product is a
 folder of Markdown files with no database, no backend, no server, no credentials
@@ -309,9 +294,7 @@ name an owner.
 
 \noindent This is also where AI has the clearest role. The repository ships an
 operating guide written for future AI agents rather than for people, in
-\repofile{AGENTS.md}, so the intended maintainer of a product that was largely
-built with agents is itself an agent, with a human spending an hour or two per
-semester steering it and checking the result.
+\repofile{AGENTS.md}, so it can be improved with little human intervention.
 
 \noindent The last thing we did was test whether any of this is specific to
 theses. The skill is a sequence that does not depend on the subject. It
@@ -320,8 +303,6 @@ profile and hands back options with evidence. So we rebuilt it for career
 advice, at \url{https://github.com/ValentinJSchmidt/german-career-compass-skills}.
 It took a fraction of the original effort, because a coding agent can adapt an
 existing structure from a few examples, and it worked better than we expected.
-It is an early version, but it shows that the transferable result of this
-project is the sequence and not only the thesis finder built on top of it.
 
 \subsection*{So what}
 
@@ -337,12 +318,8 @@ asking who maintains this in three years told us how to build it.
 
 \subsection*{Now what}
 
-\noindent The next steps are in order. First lower the cost of starting a
-session, since Section~6 shows that this is the barrier. Then run the tool with
-students who are currently looking for a thesis, which is the test we have
-prepared but not yet done. The product itself is complete. What it needs is a reason for somebody to open it,
-and that is a distribution question rather than an engineering one.
-
+\noindent The next steps are mostly making the tool more known and taking feedback from users. We have started to reach out and are still waiting for answers as of today. 
+We hope that the skill will see use by students. Since it is easily maintainable, we hope that it will be used for a long time and that it will be improved by future students.
 % --------------------------------------------------------------------------- Appendix
 \appendix
 \section{Interview Guide --- Professors}
