@@ -8,18 +8,18 @@
 \begin{document}
 
 \sostitle{Project Journey Portfolio}{StudyOS Thesis-Finder}{%
-  Group submission \quad\textbullet\quad Dominique, Max, Valentin \quad\textbullet\quad University of Tübingen}
+ Group submission \quad\textbullet\quad Dominique, Max, Valentin \quad\textbullet\quad University of Tübingen}
 
 \begin{tcolorbox}[colback=white,colframe=sosRule,boxrule=0.6pt,left=0.7em,right=0.7em,top=0.5em,bottom=0.5em]
 \textbf{The journey in one paragraph.} We started with a matching platform for
 thesis search, built as an app with a database behind it. Early conversations
 with professors broke that premise, because the supply side will not feed a
-central platform and a curated list rots the moment nobody is paid to keep it
+central platform, and a curated list rots the moment nobody is paid to keep it
 alive. We reframed the problem from matching students to topics towards the
 student's own cold start, moved to a database-free agent skill that searches the
 live web and published it as an installable package that needs no server and no
-account.  We ran a session in the course and then a public beta but we did not receive many replies.
-However the feedback we got ( also one from another professor) was positive and confirmed the two design decisions.
+account.  We ran a session in the course and then a public beta, but we did not receive many replies.
+However, the feedback we got ( also one from another professor) was positive and confirmed the two design decisions.
 \end{tcolorbox}
 
 % --------------------------------------------------------------------------- Section 1
@@ -33,16 +33,19 @@ We solve \textbf{topic discovery} for \textbf{thesis students} by \textbf{bringi
 search through the list of available topics and find their most suitable match. The motivation came from our own experience of searching and finding a suitable thesis topic. At the university, there are multiple different data sources like the official university 
 website, Alma, and additionally most of the professors also have a private lab-based website. 
 Our first hypothesis was that the major problem is the lack of a single source of truth. 
-Therefore, we have planned and developed a first full-stack prototype, with a backend, a database, and a web frontend. Since we are in the age of AI, we also planned to integrate a fully custom AI agent with custom tool calls that could supervise students during the search process and the exploration of their own possibilities and goals for their thesis. 
+Therefore, we have planned and developed a first full-stack prototype, with a backend, a database, and a web frontend. Since we are in the age of AI, we also planned to integrate a fully custom AI agent with custom tools that could supervise students during the search process and the exploration of their own possibilities and goals for their thesis. 
 There we fell into the trap that we, as software engineers, love to build complex systems, just because we can, not because it is actually needed.\\
 Our initial target group was students and professors of the Department of Computer Science at the University of Tuebingen. 
 We treated the students as the demand side and the professors as the supply side of our platform. After discussing the initial idea in the course, a lot of students thought that the idea was promising, because a lot of them faced the same problem in their bachelor studies. Common stories were that students were frustrated in the end because they didn't know about specific chairs, 
 which might have been the perfect fit for their interests and skills. Another main point was that a lot of students reached out to professors, but didn't get a response.
 At this point, we hadn't done the user research for the supply side yet, so we only had the students' perspective and the perspective of Professor Gehler.\\
 
-To mitigate this discrepancy, we planned a user study for professors, where they could give us their point of view, without rating the actual idea itself. We wanted to understand the reasons behind the missing thesis list and whether it was intended or just fell off due to the lack of time.
 
-While the whole application got stripped apart during the process of the course, the initial idea was a good starting point and a problem worth solving.
+\noindent To mitigate this discrepancy, we planned a user study for professors, where they could give us their point of view without rating the actual idea itself. We wanted to understand the reasons behind the missing thesis list and whether it was intended or just fell off due to the lack of time.
+
+
+
+\noindent While the whole application got stripped apart during the process of the course, the initial idea was a good starting point and a problem worth solving.
 
 
 
@@ -53,21 +56,21 @@ While the whole application got stripped apart during the process of the course,
 \subsection*{What}
 \begin{itemize}
   \item Two user groups: students
-    are the demand side, professors/chairs are the supply side a platform would
-    depend on. We are in the middle and wanted to satisfy both sides.
-  \item We interviewed a substantial number of professors via E-Mail.  We sent 4 probe e-mails to professor we knew, then we automatically sent mails to all the professors in the department of computer science. This took place from late April till May.  We received a lot of feedback, which we documented and analyzed. The main insights are summarized below.
-    The E-Mails can be found in the Appendix~\ref{app:prof-interview}. The professors were contacted via the official university e-mail addresses. We sent out two different variants of the e-mail, depending on whether the chair already had a public list of thesis topics or not. The professors were asked to give us their honest feedback on the current situation and the proposed idea.
-   Main documented
-    insights:
+ are the demand side; professors/chairs are the supply side a platform would
+ depend on. We are in the middle and wanted to satisfy both sides.
+  \item We interviewed a substantial number of professors via E-Mail.  We sent 4 probe e-mails to professors we knew, then we automatically sent e-mails to all the professors in the department of computer science. This took place from late April till May.  We received a lot of feedback, which we documented and analyzed. The main insights are summarized below.
+ The E-Mails can be found in the Appendix~\ref{app:prof-interview}. The professors were contacted via the official university e-mail addresses. We sent out two different variants of the e-mail, depending on whether the chair already had a public list of thesis topics or not. The professors were asked to give us their honest feedback on the current situation and the proposed idea.
+ Main documented
+ insights:
     \begin{itemize}
       \item Roughly half rejected a central platform outright and only about a
-        third were conditionally open to it.
-        Reason for rejection where that the professors think that fitting a student to a thesis topic is a personal process and that they want to get to know the student first.
-        A comparable topic-listing platform at the university had already failed for incentive reasons rather than UI reasons as can be seen by this quote: "the old system was the exact opposite: Listing theses was cumbersome. The list wasn’t maintained. And being among the few groups that listed on the central page usually just meant that the less engaged, less informed students would approach you first."
+ third were conditionally open to it.
+ The reason for rejection was that the professors think that fitting a student to a thesis topic is a personal process and that they want to get to know the student first.
+ A comparable topic-listing platform at the university had already failed for incentive reasons rather than UI reasons, as can be seen by this quote: "the old system was the exact opposite: Listing theses was cumbersome. The list wasn’t maintained. And being among the few groups that listed on the central page usually just meant that the less engaged, less informed students would approach you first."
       \item One professor reacted negatively to our e-mail and thought we were too demanding. One important lesson is that when you send out a request to professors, you should be very careful with the wording and the tone of the message.
    
     \end{itemize}
-    So we learned that the best way to please professors is to not ask them to do much at all. They can still go on and update their own website, but we don't need their input necessarily. 
+ So we learned that the best way to please professors is to not ask them to do much at all. They can still go on and update their own website, but we don't necessarily need their input. 
 
  
 
@@ -78,15 +81,15 @@ While the whole application got stripped apart during the process of the course,
 \subsection*{So what}
 \begin{itemize}
   \item The initial idea could not have told us that the \emph{supply side} is
-    the bottleneck. Interviews revealed the platform premise fails regardless of
-    how good the product is, because participation and freshness are incentive
-    problems rather than engineering problems.
+ the bottleneck. Interviews revealed the platform premise fails regardless of
+ how good the product is, because participation and freshness are incentive
+ problems rather than engineering problems.
 \end{itemize}
 
 \subsection*{Now what}
 \begin{itemize}
-  \item  The main insight was that the we could not work with a central list, but should focus on what is publicly avaiblable and on the students's side.
-  \item This brougt us to the idea of building an advisor that helps students, as detailed in the next section.
+  \item The main insight was that we could not work with a central list, but should focus on what is publicly available and on the students' side.
+  \item This brought us to the idea of building an advisor that helps students, as detailed in the next section.
 \end{itemize}
 
 % --------------------------------------------------------------------------- Section 3
@@ -94,23 +97,26 @@ While the whole application got stripped apart during the process of the course,
 
 
 \subsection*{What}
-We at first tried to find a problem that fit our rough goal a problem we had and we knew from our own student life. Finding the right bachelor or master thesis can be difficult. 
-At first we thought that the problem was that there was no central list of topic. 
-With the feedback of professors we knew that this was not  a solution to the problem of finding a suitable thesis topic for students and it would not have been maintainable either.
+At first, we tried to find a problem that fit our rough goal, a problem we had and knew from our own student life. Finding the right bachelor's or master's thesis can be difficult. 
+At first we thought that the problem was that there was no central list of topics. 
+With the feedback of professors, we knew that this was not a solution to the problem of finding a suitable thesis topic for students, and it would not have been maintainable either.
 
 \subsection*{So what}
 \begin{itemize}
-  \item We therefore discussed multiple pivots, however we still wanted to build an app,that would have been deployed. It would have been a full-stack app with a database and a backend.
-  \item We discovered our new formulation of the problem : We solve the problem of finding a suitable thesis topic for students by providing a tool that helps students find and reflect on their thesis by proving information and idea via an LLM.
-  \item For example the app would be able to ingest the transcript of records and then try to build a profile that would be used to find suitable thesis topics.
+  \item We therefore discussed multiple pivots; however, we still wanted to build an app that would have been deployed. It would have been a full-stack app with a database and a backend.
+  \item We discovered a new formulation of the problem: 
+ \begin{infobox}[We solve $X$ for $Y$ by doing $Z$]
+  We solve \textbf{the problem of finding a suitable thesis topic} for \textbf{students} by \textbf{providing a tool that helps students find and reflect on their thesis by providing information and ideas via an LLM}
+\end{infobox}
+  \item For example, the app would be able to ingest the transcript of records and then try to build a profile that would be used to find suitable thesis topics.
 \end{itemize}
 
 \subsection*{Now what}
 \begin{itemize}
-  \item  We now had a clear idea of the problem and started building an app. We wanted to asses the students based on different axis, like interest or skill. We also scraped papers by the professors and their chairs. This was all done so we might use local models or would have a big database that we could use to answer the studetents questions.
-  \item You can find the app in the git logs of our repository. However since we later decided to not use an app but a skill and then even later pivoted to a skill without any database ( even in text form) whatsoever, we have deleted it from the current iteration of the repository.
-  \item What stuck from this phase was the main idea : Advising students. Also we carried the idea of building a profile of the student first
-\end{itemize}
+  \item We now had a clear idea of the problem and started building an app. We wanted to assess the students based on different axes, like interest or skill. We also scraped papers by the professors and their chairs. This was all done so we might use local models or have a big database that we could use to answer the students' questions.
+  \item You can find the app in the git logs of our repository. However, since we later decided not to use an app but a skill and then even later pivoted to a skill without any database ( even in text form) whatsoever, we have deleted it from the current iteration of the repository.
+  \item What stuck from this phase was the main idea: Advising students. Also, we carried the idea of building a profile of the student first
+. \end{itemize}
 
 
 
@@ -118,13 +124,13 @@ With the feedback of professors we knew that this was not  a solution to the pro
 \section{Proposing a Solution}
 
 \noindent As described in Section~3, we have changed the problem definition from a tool for professors and students to a tool for students only. After we've evaluated the answers from the professors, it became quite clear that they are not interested in the centralized app solution. Mainly because they don't want the overhead, and they want to get to know the student to find a suitable thesis.
-Since the initial idea was built on the supply of the professors, we had to rethink our approach, because the problem for the students still exists. The core problem is not the absence of a central thesis-topic list. Students often lack the context to decide which chair or company fits their interests, methods, skills, constraints, and thesis style. This makes thesis search highly individual: students need guided matching, not just another static list. Since this problem is highly individual and needs deep information about the user, we thought about a private assistant.
+Since the initial idea was built on the supply of professors, we had to rethink our approach because the problem for the students still exists. The core problem is not the absence of a central thesis-topic list. Students often lack the context to decide which chair or company fits their interests, methods, skills, constraints, and thesis style. This makes thesis search highly individual: students need guided matching, not just another static list. Since this problem is highly individual and needs deep information about the user, we thought about a private assistant.
 
 
-\noindent We initially stuck to the idea of a full-stack app, with a parser that extracts the information from the professors' websites and then presents it to the user. After we presented our idea, the resulting reaction was again: "Why not just a Skill?" For us, it was quite new that we "just" use a markdown file to describe the task and an LLM will do the rest. 
+\noindent We initially stuck to the idea of a full-stack app, with a parser that extracts the information from the professors' websites and then presents it to the user. After we presented our idea, the resulting reaction was again: "Why not just a Skill?" For us, it was quite new that we "just" use a Markdown file to describe the task and an LLM will do the rest. 
 After further discussion in the team, we embraced the idea of a Skill, because a Skill can be inspected and adapted through plain Markdown, lowering the barrier for future maintainers.
 
-Additionally, we don't have to think about security, privacy, deployment, and cloud billing since this is already handled by your LLM provider of choice. This realization then led to the initial 
+\noindent Additionally, we don't have to think about security, privacy, deployment, and cloud billing since this is already handled by your LLM provider of choice. This realization then led to the initial 
 implementation of our first skill architecture, with a markdown database of all possible professors, including their recent papers, teams, and their research topics. The skill then used this information to answer student-specific questions in a conversational way. 
 During this phase, we thought deeply about what information is actually necessary to provide high-quality answers. We have developed a 6-dimensional scheme, which needs to be answered before the student gets any recommendation from the LLM. The 6 dimensions are
 
@@ -136,7 +142,7 @@ During this phase, we thought deeply about what information is actually necessar
     \hline
  1 & Interests & Core research areas or topics \\
     \hline
- 2 & Methods & How the student wants to work, e.g. empirical, qualitative, computational \\
+ 2 & Methods & How the student wants to work, e.g., empirical, qualitative, computational \\
     \hline
  3 & Domain & Application field, e.g. healthcare, education, finance, automotive \\
     \hline
@@ -160,10 +166,10 @@ to find the best possible match for the individual student.
 the commonly used web search tool of the LLM providers to find the most suitable professors and their research topics. This approach has the advantage that we don't have to maintain a database, which can be costly and error-prone if, e.g., new Professors join or old ones leave the Department of Computer Science. 
 The biggest disadvantage here was that the search tool introduces even more uncertainty and non-deterministic behavior into the skill. To mitigate this, we have built explicit search templates to get the most relevant information from the web search.
 We conducted a field study and let the course test
-both skills, the one with the markdown database and the one without. The feedback from that session was spoken rather than written, and it pointed at the variant without the database as the more useful one. This led to the final decision of removing the Markdown database and using the slimmer version with the minimal maintenance overload. The session itself is described in Section~6.
+both skills, the one with the Markdown database and the one without. The feedback from that session was spoken rather than written, and it pointed to the variant without the database as the more useful one. This led to the final decision of removing the Markdown database and using the slimmer version with the minimal maintenance overload. The session itself is described in Section~6.
 Another finding during the field study was that some students also want to do a thesis in a company. Therefore, we extended the skill to also provide suitable thesis topics from companies in Baden-Württemberg.
  
-\noindent We also anticipated professors complaining about AI spam, so we instructed the skill to output a clear disclaimer in order to encourage students to atleast modify the generated e-mails and drafts.
+\noindent We also anticipated professors complaining about AI spam, so we instructed the skill to output a clear disclaimer in order to encourage students to at least modify the generated e-mails and drafts.
 
 
 \noindent Since the skill is more uncertain, and a session takes longer than 30 minutes, we decided to use some automated testing. Therefore, we built evals as well as an orchestrated skill set to run end-to-end simulations with an LLM-as-a-judge to evaluate the actual performance. These automated tests gave a major boost in confidence and implementation speed,
@@ -178,7 +184,7 @@ from different backgrounds and with different skill sets and answer styles.
 
 \noindent The product itself is submitted separately in the Product Artifact ZIP, so this section only refers to that submission.
 
-\noindent The build followed the priority order that came out of Section~4. We started with the university arm, added the company arm on the same database-free principle and consolidated both into a single entry-point skill, so that a student does not have to decide up front which of the two paths they need.
+\noindent The build followed the priority order that came out of Section~4. We started with the university arm, added the company arm on the same database-free principle, and consolidated both into a single entry-point skill, so that a student does not have to decide up front which of the two paths they need.
 
 % --------------------------------------------------------------------------- Section 6
 \section{Testing}
@@ -199,7 +205,7 @@ our own, so we use these runs as a regression check only.
 \noindent A handful of friends and fellow students ran the skill in front of
 us, most of them from computer science. Nothing was recorded, so this is
 reported from memory. Reactions were
-positive and several said they would treat the suggestions as a starting point
+positive, and several said they would treat the suggestions as a starting point
 rather than act on them.
 
 \noindent The one test outside that circle was the course session in early July,
@@ -217,9 +223,9 @@ deeper into a single option. The
 form is in Appendix~\ref{app:gehler-feedback}.
 
 \noindent We then published the skill package with an install guide, sent a
-recruiting mail in German and English and linked an anonymous survey. The survey
+recruiting mail in German and English, and linked an anonymous survey. The survey
 asked whether the run had changed how clearly the student sees their own thesis,
-plus relevance, source trust and whether they would contact anyone suggested. We
+plus relevance, source trust, and whether they would contact anyone suggested. We
 asked people whose run had broken off to answer anyway. We received no
 responses. The mail and the survey are in
 Appendix~\ref{app:beta-mail}.
@@ -251,7 +257,7 @@ deeper instead of stopping at the option map. Drafting a contact mail now
 requires reading at least one paper of the chair first. Two requests were
 dropped. Letting professors supply input would have rebuilt the supply-side
 dependency the project had just left, and an example walkthrough would not
-have fixed the session ending too early, which was the actual problem. Still professors can still list thesis topics on their own website, and the skill will find them.
+have fixed the session ending too early, which was the actual problem. Still, professors can list thesis topics on their own website, and the skill will find them.
 
 % --------------------------------------------------------------------------- Section 7
 \section{Iteration and Next Steps}
@@ -259,8 +265,8 @@ have fixed the session ending too early, which was the actual problem. Still pro
 \subsection*{What}
 
 \noindent Two changes from feedback changed what the product is. The
-first was the pivot described in Sections~2 and~3, when the professor interviews
-ended the platform premise and with it the full-stack application we had already
+first was the pivot described in Sections~2 and~3, when the professor's interviews
+ended the platform premise and, with it, the full-stack application we had already
 built. The second came in August, when we asked our supervisor what mattered more
 to him, the proposals the skill generates or the fact that a student had used it
 to think about what they want to do. He answered that the reflection mattered
@@ -277,7 +283,7 @@ meant to go into a repository of the AI Center, which would give it an address
 that does not depend on us, and we have asked the student advisory service
 whether it could be mentioned at the information events on bachelor theses,
 where students with exactly this question are. That mail is in
-Appendix~\ref{app:seibold-mail} and we are waiting for an answer.
+Appendix~\ref{app:seibold-mail}, and we are waiting for an answer.
 
 
 \noindent Maintenance is a question we answered by design. The product is a
@@ -286,7 +292,7 @@ and no build step, so the failure modes that usually end a student project do
 not apply. The repository lives in the \texttt{Tue-StudyOS} organisation on
 GitHub rather than in a private account. Three things can still go stale, which
 are the skill format if the providers change it, the university websites if they
-are restructured and our discovery rules if students start searching
+are restructured, and our discovery rules if students start searching
 differently. None of these needs somebody to watch the project, only somebody to
 pick it up on the day it stops working, which we estimate at a couple of hours
 per semester. In that sense the skill is finished, and that is why we do not
@@ -297,7 +303,7 @@ operating guide written for future AI agents rather than for people, in
 \repofile{AGENTS.md}, so it can be improved with little human intervention.
 
 \noindent The last thing we did was test whether any of this is specific to
-theses. The skill is a sequence that does not depend on the subject. It
+these. The skill is a sequence that does not depend on the subject. It
 interviews the person until a profile exists, searches live sources against that
 profile and hands back options with evidence. So we rebuilt it for career
 advice, at \url{https://github.com/ValentinJSchmidt/german-career-compass-skills}.
@@ -309,7 +315,7 @@ existing structure from a few examples, and it worked better than we expected.
 \noindent The improvements came from two sources. Outside input showed us the
 problem. The professor interviews ended the platform, and a short presentation
 in the course ended the web app, because the reaction was a question we had not
-asked ourselves, which was why we were not simply using a skill. In both cases
+asked ourselves, which was why we were not simply using a skill. In both cases,
 the value was the different vantage point. Our own thinking produced the
 constraints. Dropping the markdown database came from asking who would keep it
 up to date and concluding that the capacity for that would not exist. Nobody
@@ -326,7 +332,7 @@ We hope that the skill will see use by students. Since it is easily maintainable
 \label{app:prof-interview}
 
 \noindent The professor research referenced in Section~\ref{sec:users} was
-conducted by e-mail. We sent two variants depending on whether the chair already
+conducted by e-mail. We sent two variants depending on whether the chair had already
 published thesis topics or not; both are reproduced verbatim below.
 
 
@@ -356,11 +362,11 @@ which is genuinely rare and makes your perspective especially valuable to us.
 
 \begin{enumerate}[leftmargin=1.4em,itemsep=0.35em]
   \item How much effort does it take to keep your topic list up to date --- is
-    it manageable, or does it create noticeable overhead?
+ it manageable, or does it create noticeable overhead?
   \item Do topics sometimes stay listed past their actual availability, or get
-    delayed because updating feels like extra work?
+ delayed because updating feels like extra work?
   \item How do you currently decide when and how to update the list --- is there
-    a process, or does it happen ad hoc?
+ a process, or does it happen ad hoc?
 \end{enumerate}
 
 \noindent We're developing a concept we'd love your honest reaction to: a
@@ -373,9 +379,9 @@ possible.
 
 \begin{enumerate}[leftmargin=1.4em,itemsep=0.35em,resume]
   \item Is that something your chair would actually want to use --- and if not,
-    what would need to be different for it to make sense?
+ what would need to be different for it to make sense?
   \item Are there concerns around data privacy or how a shared system would
-    handle your content that we should be aware of?
+ handle your content that we should be aware of?
 \end{enumerate}
 
 \noindent A brief written reply would already help us enormously. If anything is
@@ -392,7 +398,7 @@ easier to discuss directly, we're happy to find a time.
 \noindent Dear [Name],
 
 \medskip
-\noindent we are Master's students in Machine Learning at the University of
+\noindent We are Master's students in Machine Learning at the University of
 T\"ubingen, working on a project supervised by Prof.\ Peter Gehler on how thesis
 topics are currently --- and often not --- shared across chairs in our
 department.
@@ -407,14 +413,14 @@ conclusions. All answers are useful to us, including ``we don't want to.''
 
 \begin{enumerate}[leftmargin=1.4em,itemsep=0.35em]
   \item Is the absence of public listings a deliberate choice --- for example,
-    because you prefer students to reach out directly --- or more a matter of no
-    good tool existing to make it easy?
+ because you prefer students to reach out directly --- or more a matter of no
+ good tool existing to make it easy?
   \item Are there topics internally that would in principle be suitable for
-    students, or do topics at your chair tend to emerge from ongoing research
-    rather than being defined in advance?
+ students, or do topics at your chair tend to emerge from ongoing research
+ rather than being defined in advance?
   \item If maintaining a public list has felt like too much overhead in the
-    past: what specifically makes it costly --- writing the descriptions,
-    keeping them current, or something else?
+ past: what specifically makes it costly --- writing the descriptions,
+ keeping them current, or something else?
 \end{enumerate}
 
 \noindent We're developing a concept we'd love your honest reaction to: a
@@ -424,9 +430,9 @@ possible.
 
 \begin{enumerate}[leftmargin=1.4em,itemsep=0.35em,resume]
   \item Is that something your chair would actually want to use --- and if not,
-    what would need to be different for it to make sense?
+ what would need to be different for it to make sense?
   \item Are there concerns around data privacy or how a shared system would
-    handle your content that we should be aware of?
+ handle your content that we should be aware of?
 \end{enumerate}
 
 \noindent We're not trying to push a solution --- we want to know whether a
@@ -475,15 +481,15 @@ directions were suggested?}\\
 \medskip
 \noindent \textbf{What was missing for you to take a real next step after the
 session?}\\
-``I think a bit more follow up help to be offered. Like tell me which one you
+``I think a bit more follow-up help to be offered. Like tell me which one you
 would choose and then walk a bit more down that road. Eg also a bit more clarity
 of what I likely learn.''
 
 \medskip
 \noindent \textbf{Would you use the skill again or recommend it to another
 student?}\\
-``Can a professor provide information for the skill. Eg looking for \dots\ Not
-looking for\dots\ / An example walkthrough, or like \,``Lisa found her thesis
+``Can a professor provide information for the skill? Eg looking for \dots\ Not
+looking for\dots\ / An example walkthrough, or like \, ``Lisa found her thesis
 \dots'' / Example prompts? Maybe explain what info is needed or give
 suggestions''
 
@@ -503,7 +509,7 @@ supervisor, and we need people to actually try them out and tell us what
 happened.
 
 \medskip
-\noindent \textbf{What it does.} You type one command and it interviews you about
+\noindent \textbf{What it does.} You type one command, and it interviews you about
 your interests, methods and constraints, then searches the live web for
 University of T\"ubingen chairs or Baden-W\"urttemberg companies that fit, and
 hands you a map of real options with contact paths. The point is less the list
@@ -515,11 +521,11 @@ thesis fits them than they went in with.
 
 \begin{enumerate}[leftmargin=1.4em,itemsep=0.35em]
   \item Install it. Instructions for every route (Claude, ChatGPT, Gemini, or a
-    terminal agent) are at \url{https://github.com/Tue-StudyOS/study-os-thesis/blob/main/INSTALL.md},
-    downloads at \url{https://github.com/Tue-StudyOS/study-os-thesis/releases/latest}.
-    No account, no signup, nothing installed outside one folder.
+ terminal agent) are at \url{https://github.com/Tue-StudyOS/study-os-thesis/blob/main/INSTALL.md},
+ downloads at \url{https://github.com/Tue-StudyOS/study-os-thesis/releases/latest}.
+ No account, no signup, nothing installed outside one folder.
   \item Run it. Type \texttt{thesis-finder} and answer the questions. Plan for
-    20--40 minutes. You need web search enabled in your assistant.
+ 20--40 minutes. You need web search enabled in your assistant.
   \item Fill in the survey, about 4 minutes:
     \url{https://www.soscisurvey.de/thesis-skill/}
 \end{enumerate}
@@ -532,7 +538,7 @@ halfway. A failed run is a result for us, and those are the answers that actuall
 change the tool.
 
 \medskip
-\noindent The survey is anonymous, we don't store IP addresses, and you can stop
+\noindent The survey is anonymous; we don't store IP addresses, and you can stop
 at any point.
 
 \medskip
@@ -553,7 +559,7 @@ consent text is omitted here. All batteries are five-point agreement scales.
 \begin{itemize}[leftmargin=1.4em,itemsep=0.2em]
   \item My idea of my thesis is just as vague now as it was before.
   \item I have a clearer idea of what kind of thesis would fit me.
-  \item Since the session I have thought about my thesis more concretely than before.
+  \item Since the session, I have thought about my thesis more concretely than before.
   \item The session made me reconsider something I thought I wanted.
   \item Everything it showed me I already knew about.
   \item I came across directions or research groups I would not have found on my own.
@@ -572,7 +578,7 @@ hour.
   \item I intend to contact at least one of the people or places suggested.
   \item I would trust the information enough to write to one of them.
   \item Please select ``disagree'' here so we can tell careful answers apart from
-    clicked-through ones. (attention check)
+ clicked-through ones. (attention check)
   \item The suggestions fit what I am actually interested in.
   \item Most of the suggestions felt generic and could have gone to any student.
 \end{itemize}
@@ -601,9 +607,9 @@ partway were asked to answer anyway and say where it broke off.
 \noindent Dear Ms Seibold,
 
 \medskip
-\noindent you will already be familiar with the StudyOS course, and like other
-groups we are now approaching you. We have built several skills for AI agents
-that help a student find a thesis, in T\"ubingen.
+\noindent You will already be familiar with the StudyOS course, and like other
+groups, we are now approaching you. We have built several skills for AI agents
+that help a student find a thesis in T\"ubingen.
 
 \medskip
 \noindent We hope that Prof.\ Gehler will take these skills into a repository of
@@ -613,11 +619,11 @@ suitable thesis.
 
 \medskip
 \noindent We have also taken care not to make it too easy for students, so that
-reflection actually happens and teaching staff are not flooded with AI slop.
+reflection actually happens, and teaching staff is not flooded with AI slop.
 
 \medskip
 \noindent Would it be possible to mention these skills at the information events
-on theses? Or would we have to contact somebody else for that?
+on these? Or would we have to contact somebody else for that?
 
 \medskip
 \noindent Thank you for communicating so openly with students.
@@ -631,7 +637,7 @@ on theses? Or would we have to contact somebody else for that?
 
 \noindent Sent in English on 10 September 2026 to one of the professors from the
 interview round in Appendix~\ref{app:prof-interview}. Both mails are reproduced
-verbatim. The professor's name, the e-mail addresses and the signature are
+verbatim. The professor's name, the e-mail addresses, and the signature are
 removed for data protection reasons.
 
 \subsection*{Our mail}
@@ -644,7 +650,7 @@ your honest opinion on its outcome.
 
 \medskip
 \noindent Taking your feedback to heart, we shifted away from the central
-platform and have now developed a skill for Chatbots like Claude, ChatGPT, etc,
+platform and have now developed a skill for Chatbots like Claude, ChatGPT, etc.,
 that might help students find their thesis.
 
 \medskip
@@ -687,14 +693,14 @@ project is also almost over now).
 
 \medskip
 \noindent Thanks for your kind mail! I couldn't yet try your tool, but from what
-you write below and on GitHub, it sounds like a great idea that doesn't just help
+you write below, and on GitHub, it sounds like a great idea that doesn't just help
 students, but also the professors, and if it's just by reducing the amount of
-untargeted mails we get.
+untargeted emails we get.
 
 \medskip
 \noindent I hope that you'll get a lot of users! And I'll watch out for emails
 from the tool (although I guess that most students will want to at least edit
-the email, to sound more genuine. But that's fine)
+the email to sound more genuine. But that's fine)
 
 \medskip
 \noindent Best wishes,\\
@@ -702,3 +708,4 @@ the email, to sound more genuine. But that's fine)
 
 
 \end{document}
+
